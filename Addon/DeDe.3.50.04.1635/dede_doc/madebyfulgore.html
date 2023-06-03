@@ -1,0 +1,223 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><title>Made by Fulgore</title></head>
+<body bgcolor="#FFFFFF">
+
+<font face="Arial" size="5" color="#000000"><font face="Arial" size="5" color="#0000FF"><b>Made by Fulgore
+<br>
+</b></font></font>
+
+
+
+<p align="CENTER"><font face="Times New Roman" size="7" color="#000000"><font face="Times New Roman" size="7" color="#FF0000">Cracking using DeDe
+<br>
+</p>
+<br>
+</font></font>
+<B>Intro</B>
+<BR><BR>
+Well, this tut is REALLY basic, just to get you familiar with Dede.
+I will show you how to patch the program to get it insantly registered,
+and how to create a key generator.
+<BR><BR>
+<B>Tools</B><BR><BR>
+Hmmm... i dunno. maybe dede? :)
+then goes Hiew, and Delphi for coding the KeyGen<BR><BR>
+
+<B>Files</B><BR><BR>
+
+I included a test executable for cracking. It was written by me in a few 
+seconds espesially for this tutorial.<BR>
+<H5>Note by xavier : you can find the file <A HREF="/dede/files/test.zip">here</A></H5> 
+
+* For parching jump to the last section of this file...<BR><BR>
+
+<B>Let's get busy!</B><BR><BR>
+
+<UL>
+<LI>1. Start Dede.
+<LI>2. Open File, and Click Process.
+<LI>3. Program Will be ran. Get familiar with it(type name&company and try reg button)
+<LI>4. Press Ok button ok Dede's loader
+<LI>5. Goto procedures Tab in Dede
+<LI>6. Select Form1 and Button1Click, that's where it's obviously will happen.
+<LI>7. Start browsing the code, till you come across these:
+* Possible reference to control 'Edit2':TEdit<BR>
+and later on:<BR>
+* Possible reference to control 'Edit1':TEdit<BR>
+These shows you that program requested the .Text values of our Name/Company fields.
+<LI>8. Then look for following:
+</UL>
+<PRE>* Reference to: System..LStrCat3()
+|
+0044437D   E82AF8FBFF             call    00403BAC
+00444382   8D55F0                 lea     edx, [ebp-$10]
+
+This means that both strings were Cat (appened) to a new one.
+9. Next you'll see that edit3.text value is requested too. interesting, huh? :)
+00444390   8B55F0                 mov     edx, [ebp-$10]
+00444393   8B45FC                 mov     eax, [ebp-$04]
+
+* Reference to: System..LStrCmp()
+|
+00444396   E8D5F8FBFF             call    00403C70
+0044439B   7407                   jz      004443A4</PRE>
+<PRE>uhuh. Weeeell. This means, that edx and eax compared, e.g. the Cat value of first two
+with serial num. Could it be that simple? let's see...
+if we'll browse thru this call:
+0044439B   7407                   jz      004443A4
+By using Disassemble fature in Dede with 004443A4 RVA,
+we'll only realize that if the strings were equal, then the program will do just 
+about nothing, it'll compare true with true and false with false ;)
+So, we'll keep on browsing;
+
+10. 0044439F   E85C010000             call    00444500
+I have a cousy feeling about this one :) let's go into it and check!
+The begining of the function is similar to the one we disscussed, it takes to
+values and appends them.
+What now?
+00444550   E87FFEFFFF             call    004443D4
+this is a procedure... what it does?
+|           or: System..LStrLen()
+004443F8   E863F7FBFF             call    00403B60
+takes a length of a original string...
+004443FF   83FB0A                 cmp     ebx, +$0A
+00444402   7F12                   jnle    00444416
+and creates a loop until $0A, which is 10 in decimal.
+So it is equal to "for i:=length(s) to 10"
+Oki. Now what do we do inside the loop?
+
+* Reference to: System..LStrCat()
+We add an 'A' character to the end of a string.
+
+What is the conclusion? The procedure takes a string, and if it's smaller than
+10 chars, it fills the ending of the string with 'A' chars.
+
+11. Press the back button, and go to the next line:
+* Possible String Reference to: "123-"
+|
+00444555   683C464400             push    $0044463C
+oki. we same a '123-' value. good.
+now browse on. you'll see that some strings are created using this procedure:
+ a)LStrCopy(something,from,to)
+ b)store result
+ c)pass result to function at 00444444
+
+12. let's analize the (a) part:
+0044455E   B905000000             mov     ecx, $00000005
+00444563   BA01000000             mov     edx, $00000001
+because function parameters go in reverse order, this means that it takes the
+eax value, copies from $1 to $5. so if string was 'aaabbbccc' it'll result 'aaabb';
+
+now for the second occuranse of (a):
+00444587   B904000000             mov     ecx, $00000004
+0044458C   BA05000000             mov     edx, $00000005
+the same crap, now from position 5, 4 chars. so the result would be: 'bbbc'
+
+13. between this two calls, you saw a 
+* Possible String Reference to: "-321-"
+|
+0044457E   684C464400             push    $0044464C
+remember it, it'll go in the middle.
+* Possible String Reference to: "-123"
+|
+004445A7   685C464400             push    $0044465C
+and another one in the end.
+So, now we know the structure of the serial: 123-xxx-321-xxx-123
+
+14. now let's find those xxx values, by sneaking into that 00444444 call.
+once more:
+* Possible String Reference to: "zZz"
+saved at the begining and at the end,
+then:
+00444488   BA03000000             mov     edx, $00000003
+* Reference to: System..LStrCatN()
+it takes the third charachter from the string and copies it in this way:
+zZz + char + zZz
+then, we see that in the same manner, it takes the first and seccond chars and
+adds the to the begining and the end.
+So if we had a 'Hello' string, the result would be:
+'HzZzlzZze'
+cool.
+
+15. now that's about it!
+now, just let's go thru the tutorial and build our own serial!
+Name: Ful Company:gore 
+a)Temp String: Fulgore
+b)After length pumping we get: FulgoreAAA
+c)now we pass the string to first copy routine and get 'Fulgo', we pass it to 
+  the second function and get uzZzlzZzF
+d)now we pass the string to second copy routine and get 'oreA', we pass it to 
+  the second function and get rzZzezZzo
+e) now we add 'em all and get: 123-FzZzlzZzu-321-ozZzezZzr-123
+
+f) let's run and check it: tada!!!
+
+g) use this two functions:
+1st:
+
+procedure prepare(var s:string);
+var z:string; i:integer;
+begin
+z:=s;
+for i:=length(z) to 10 do
+ s:=s+'A';
+end;
+
+2nd
+
+function Cripple(s:String):string;
+var kk:string;
+begin
+kk:='zZz'+s[3]+'zZz';
+kk:=s[1]+kk+s[2];
+result:=kk;
+end;
+
+3rd.
+
+function generate(name,comp:string):string;
+var temp:string;
+begin
+temp:=name+comp;
+prepare(temp);
+result:='123-'+cripple(copy(temp,1,5))+'-321'+cripple(copy(temp,5,4))+'-123';
+end;
+</PRE>
+<BR><BR>
+<B>Patching</B><BR><BR>
+
+<PRE>Well, this is really simple, in the Button1Click, just run to
+that call    00444500 and enter it... Browse until you come across:
+
+004445D2   740C                   jz      004445E0
+* Possible String Reference to: "screw you!"
+004445D4   B86C464400             mov     eax, $0044466C
+* Reference to: Dialogs.ShowMessage(System.AnsiString)
+004445D9   E896F9FFFF             call    00443F74
+004445DE   EB0A                   jmp     004445EA
+* Possible String Reference to: "good for you!"
+
+and now it's obviouse that all you need is to change jz to jmp.
+goto RVA converter in Dede and get the real offset: 000439D2
+open hiew, goto hex mode, press F5 and goto 000439D2;
+it will appear as JE opcode there... fix it to JMP, save and run.
+voila! it worked ;)
+Now fix it back, and read the keygen essay :)</PRE>
+
+<BR><BR>
+<B>Closing words:</B><BR><BR>
+
+Thanks for reading this junk, i hope you learned atleast ANYTHING from it ;)<BR>
+Bigest thanx to DaFixer for his great software, and to Borland for the 
+best RAD ever.<BR><BR>
+
+and to you for reading !<BR><BR>
+
+byebye<BR><BR>
+
+fulgore<BR><BR>
+<A HREF="mailto:yukelzon@hotmail.com">Fulgore</A>
+
+
+
+</body></html>

@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE></TITLE>
+<META NAME="Author" CONTENT="Xavier Lafinesse">
+<META NAME="Description" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+</HEAD>
+<BODY BACKGROUND="images/fond.gif" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#000080" VLINK="#800080" ALINK="#FF0000">
+<TABLE WIDTH=100% HEIGHT=100% BORDER=0>
+  <TR>
+    <TD valign=top height=99%>
+<!--- enter text here -->
+<BR><BR><BR><BR><BR>
+<b><font size="5" color="#000080">What are DSF files</u></font></b><br><br>
+<font face="Arial" size="3" color="#000000">DSF files contain the symbols of the exports from different BPL libraries. DeDe disassemble engine use this symbol files to comment the class members method calls in ASM source it generates. The ideology is very close to the IDA symbol files for VCL, MFC etc. 
+<br>
+If you haven't loaded a symbol file for any BPL you wont get references to calls to this BPL classes!
+<br><br>
+</font>
+
+<b><font size="5" color="#000080">How to load DSF files</u></font></b><br><br>
+<font face="Arial" size="3" color="#000000">  You can load a DSF file using File|Load Symbol File menu selecting the dsf file. If you want some dsf files to be loaded automaticly each time DeDe is loaded use the View|Configuration menu and from Symbols tab manage the dsf that should be loaded  at startup of DeDe. If you want to see the names of exports that are contained in a certain DSF file use the View|Symbols menu.
+<br><br>
+<b><font size="5" color="#000080">Why should i create DSF files</u></font></b><br><br>
+<font face="Arial" size="3" color="#000000">  Because if you deal with a program that uses custom components and you have the components BPLs if you create a DSF for these components DeDe will comment for you all the calls to those components. Nice uh? :) Also the creation of DSFs is very fast.
+<br>
+
+<br>
+</font>
+<b><font size="5" color="#000080">What are DOI files</u></font></b><br><br>
+<font face="Arial" size="3" color="#000000"><B><FONT COLOR="#339933">DOI = Delphi Class Offset Information.</FONT></B><BR><BR>
+This technology uses offset information to recognize class members - methods and fields.
+ The DOI files contains the needed data for recognition and DeDe emulates instructions and find references using those offsets. 
+ For example at offset CC from the beginning of any class that derives from TForm stays the pointer to ShowModal method.
+ So when call [reg + $00CC] is called and the emulator knows that reg contains object from such class it puts reference to TForm.ShowModal.
+ <BR>The DOI files should reside in the DSF folder.<BR>
+ <BR>
+ <FONT COLOR="#339933"><B>This is a simple generated code with the help of DOI:</B></FONT><BR>
+ <BR>
+<PRE> * Reference to control LogMemo : TMemo
+|
+004E4E7C   8B80F4020000           mov     eax, [eax+$02F4]
+
+* Reference to field TMemo.Lines : TStrings
+|
+004E4E82   8B8004020000           mov     eax, [eax+$0204]
+
+* Possible String Reference to: 'Loading Export Names ...'
+|
+004E4E88   BA0C584E00             mov     edx, $004E580C
+004E4E8D   8B08                   mov     ecx, [eax]
+
+* Reference to method TStrings.Add(string)
+|
+004E4E8F   FF5134                 call    dword ptr [ecx+$34]
+</PRE>
+<br>
+</font>
+<b><font size="5" color="#000080">How do i use DOI files</u></font></b><br><br>
+<font face="Arial" size="3" color="#000000">
+
+Copy the joined *.DOI files in the DSF folder.<BR>
+The DOI file data should be included automatically in the generated code.
+
+
+<br><br>
+</font>
+<b><font size="5" color="#000080">What is this: show all found references.</u></font></b><br><br>
+<font face="Arial" size="3" color="#000000">  Recognizing of a procedure calls is made by comparing bytes.
+ Sometimes (depending how many DSFs you have loaded) there are more than one procedure 
+ with the same byte pattern. In this case DeDe is unable to determine exactly whitch one is called. 
+ If you check this option DeDe will show you all references if it finds more than one. 
+ If this is unchecked you will see only the first found reference. 
+ Note: The search orded is by the order of loaded DSFs and then alphabeticaly by unit name, 
+ class name, procedure name.
+<br>
+
+<br>
+</font>
+<b><font size="5" color="#000080">What is this : String references.</u></font></b><br><br>
+<font face="Arial" size="3" color="#000000">Normaly programs like W32DASM for example search only for 
+english string references. If you deal with a program that has other language strings then from 
+here you can choose the set of chars DeDe disassemble engine will search string references. 
+Note: You may have invalid referencec if you use the full set #32-#255. 
+Note: delphi programs normaly do not use UNICODE strings and thats why this option is not 
+included in string references configuration.
+<br><br>
+</font>
+<b><font size="5" color="#000080">Can i save the processed target?</u></font></b><br><br>
+<font face="Arial" size="3" color="#000000">Yes there is such an option. 
+In general DeDe is very fast so you may not need this. After saving a project do not try to open it, 
+if the same target is processed in DeDe. You will have problems. 
+If you open a project file you will be able to disassemble and use all DeDe options except one - 
+saving delph project space. If you want to do this you have to reprocess the target again! 
+<br><br>
+</font>
+
+<b><font size="5" color="#000080">Why Dede says : This is not a Delphi Program.</u></font></b><br><br>
+<font face="Arial" size="3" color="#000000"> 1-st make sure the target is not packed or crypted
+<br>
+ 2-nd if you have unpacked/dumped the target make sure it has a valid entry point and also valid section names. A normal delphi program has these sections: 'CODE', 'DATA', 'BSS', '.idata', '.tls', '.rdata', '.reloc', '.rsrc'. If it is a dll it will also have '.edata' section.
+<br>
+  If you are sure the target is OK and it is a delphi program, 
+  then you are dealing with one of those delphi programs 
+  that are processes somehow to fool DeDe and other similar programs. 
+  I'm working over the engine to recognize such stupid tricks 
+  that make DeDe to fail (in a different way, exceptions). 
+  So I will appreciate if you send me a mail with your target name and problem description.
+<br><br><br><br>
+</font>
+<b><font size="+3"><font color="#000099">Various Tips.</font></font></b><br>
+<ul type="circle">
+  <li><font size="+1">Copy a selected code extract to the clipboard.</font><br>
+  <img src="images/018.GIF" border="0" width="650" height="439"><br>
+  <li><font size="+1">Searching a string.</font><br>
+  <img src="images/019.GIF" border="0" width="650" height="439"><br>
+  <li><font size="+1">Double click on a adress to display the address contents.</font><br>
+  <img src="images/020.GIF" border="0" width="650" height="439"><br>
+  <li><font size="+1">Step back and forwards with the arrow buttons.</font><br>
+   <img src="images/021.GIF" border="0" width="650" height="439"><br>
+  <li><font size="+1">Dump any procedure code if you know the address.</font><br>
+  <img src="images/022.GIF" border="0" width="650" height="439"><br>
+  <li><font size="+1">Show the DPR disassembly.</font><br>
+  <img src="images/023.GIF" border="0" width="650" height="439"><br>
+  <li><font size="+1">Display the properties of any form.</font><br>
+  <img src="images/024.GIF" border="0" width="650" height="439"><br>
+  <li>
+  <li>
+  <li>
+</ul><br><br>
+
+<!--- END (enter text here)-->
+   </TD>
+  </TR>
+  <TR>
+    <TD valign=top height=1%>
+<CENTER>
+<FONT size=1>
+© Copyright 2001
+Xavier Lafinesse
+<!-- End (company name)-->
+</FONT>
+</CENTER>
+   </TD>
+  </TR>
+
+</TABLE>
+
+</BODY>
+</HTML>

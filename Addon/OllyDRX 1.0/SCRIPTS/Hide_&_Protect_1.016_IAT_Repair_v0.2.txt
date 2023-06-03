@@ -1,0 +1,65 @@
+/*
+Script written
+Rel. 1 - By What
+Rel. 2 - By Joker_Italy 2008/05
+IAT Repair Hide&Protect 1.016
+Test Environment : ODBGScript 1.62 under WINXP    
+*/
+
+
+var oep					//Declares Variable
+var good
+var iatstart
+var address
+
+cmp $VERSION, "1.62"
+jb odbgver
+
+MSGYN "Are you on OEP ?"
+cmp $RESULT, 0
+je endmsy
+mov oep, eip                             
+ask "Enter IAT START"
+cmp $RESULT, 0
+je end
+mov iatstart, $RESULT                  
+ask "Enter IAT END"
+cmp $RESULT, 0
+je end
+loop:					
+cmp eip, $RESULT			 
+ja done					 
+add iatstart, 4				 
+mov eip, iatstart			 
+mov good, [eip]				 
+cmp good, 10000000       		 
+ja loop					 
+cmp good, 0				 
+je loop					 
+mov eip, good				 
+loop2:					 
+sti					 
+cmp eip, 10000000			 
+jb loop2				 
+mov address, eip			 
+mov eip, iatstart			 
+mov [eip], address			 
+jmp loop 				 
+
+done:					 
+mov eip, oep				 
+msg "Script by Joker_Italy, Import now IAT ImportRec. Thank you for using my script!"
+ret					 
+
+odbgver:
+msg "Please use the ODbgscript 1.62"
+jmp end
+
+endmsy:
+msg "Search OEP and running this script"
+jmp end
+
+
+
+end:
+ret

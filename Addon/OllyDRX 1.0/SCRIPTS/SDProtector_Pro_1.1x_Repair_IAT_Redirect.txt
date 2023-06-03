@@ -1,0 +1,57 @@
+/*
+Script written by Joker_Italy
+Script   : SDProtector 1.1X Redirect Repair / use also Haggar Script "SDProtector Pro 1.12 Fix IAT Haggar.txt"
+version  : v1.01
+Date     : 18-Sept-2008
+Test Environment : OllyDbg 1.1, ODBGScript 1.64, WINXP, WIN2000 
+*/
+
+
+
+
+
+
+var addr
+var blockstart
+var blockend
+
+ricicla:
+ask "Enter base address of block where IAT Start:"
+cmp $RESULT,0
+je  done8
+mov blockstart,$RESULT
+ask "Enter base address of block where IAT End:"
+cmp $RESULT,0
+je  done8
+mov blockend,$RESULT
+
+
+var valore
+var preleva
+mov addr,blockstart
+
+pattern1:
+mov valore, [addr]
+cmp valore, 300000
+ja salta
+cmp valore, 000000
+jz salta
+mov preleva,[valore]
+mov eip, valore
+sti
+mov [addr], eip
+salta:
+add addr,4
+cmp addr, blockend
+je quit
+jmp pattern1
+
+
+done8:
+msg "You have must base address IAT Start"
+jmp ricicla
+quit:
+MSG "Script by Joker_Italy,Thank you for using my script!"
+ret
+
+

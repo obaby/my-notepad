@@ -1,0 +1,24 @@
+IconPackager图标包是基于IconPackager软件的支持格式，该程序很方便的更换您的系统图标，使之个性化和人性化。
+
+安装方法：
+
+《第一种》*.IP
+
+把*.IP文件复制到IconPackager软件的安装目录，如：C:\Program Files\Stardock\Object Desktop\IconPackager\Themes  复制好后双击*.IP文件便可自动安装。
+
+《第二种》*.iconpackage
+
+可直接双击*.iconpackage快捷方式，*.iconpackage文件便可自动安装。
+
+图标包使用图文教程http://www.pcjing.cn/IconPackagerTutorial.asp 
+
+IconPackager3.0汉化版下载:http://www.pcjing.cn/view.asp?id=4934
+
+======================================================================
+ 
+更多美化下载：www.pcjing.cn
+           www.pcjdesktop.cn
+ PC镜主站：www.pcjing.com
+
+======================================================================
+本站资源来源与网络，如有版权问题，请及时与我们联系，我们将尽快给予删除。

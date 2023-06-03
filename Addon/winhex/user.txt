@@ -1,0 +1,8 @@
+// WinHex license file
+
+Name: "obaby"
+Addr1: "火星黑客研究院"
+Addr2: "http://www.h4ck.org.cn"
+Key1: 90CD442CDE5EFFC16E164F2D0490B1F1
+Key2: 8838C331700219A64916EF9870DDE778
+Chksm: 5B

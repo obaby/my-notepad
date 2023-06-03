@@ -1,0 +1,24 @@
+
+2002.07.09 v. 1.4
+
++ Now work with 16-bits Delphi app.
+
+
+2002.07.04 v. 1.3
+
++ Removed the last semicolon
+
+
+2001.11.29 v. 1.2
+
+! Stupid BUG with buffer overrun
+
+
+v. 1.1
+
++ Output format changed
+
+
+v. 1.0
+
++ Initial reliase

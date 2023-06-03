@@ -1,0 +1,15 @@
+program Project1;
+
+uses
+  Forms,
+  unit1 in 'unit1.pas' {Form1},
+  LauncherUnit in 'LauncherUnit.pas' {LauncherForm};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TLauncherForm, LauncherForm);
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

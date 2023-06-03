@@ -1,0 +1,581 @@
+//Script for finding VMs and run it --> Complete copier,fix calls
+var makan
+var Image
+var mahal
+var codeend
+var fileend
+var opc
+var length
+var logging
+var st
+var shoro
+var payan
+var count
+var dota
+var sta
+var rev
+var natije
+var fail
+var jmpfix
+var jmpfix2
+var jmpfix3
+var als
+var cls
+var fixed
+var nooe
+var nooe2
+var sized
+var avval
+mov codeend,00669000
+mov fileend,00972000
+mov makan,00401000
+mov bp1,00903CA8
+mov bp2,00903D18
+bp bp1
+bp bp2
+
+starting:
+find makan,#68????????E9????????#
+cmp $RESULT,0
+je Ended
+mov logging,$RESULT
+add logging, " -->"
+mov eip,$RESULT
+mov opc,$RESULT
+mov mahal,$RESULT
+add mahal,6
+mov mahal,[mahal]
+add mahal,5
+add mahal,$RESULT
+cmp mahal,fileend
+ja Nexting
+cmp mahal,codeend
+jb Nexting
+run
+mov length,eax
+run
+sto
+add logging,length
+log logging
+mov jmpfix,eip
+mov jmpfix2,eip
+mov jmpfix3,eip
+add jmpfix2,length
+jmp start
+
+Ended:
+msg "All VMs fixed,view log data for more information"
+bc bp1
+bc bp2
+ret
+
+Nexting:
+mov makan,opc
+add makan,1
+jmp starting
+
+start:
+mov fixed,0
+GCI eip,SIZE
+cmp $RESULT,1
+je next
+cmp $RESULT,2
+je next
+cmp $RESULT,3
+je 3byti
+cmp $RESULT,4
+je 4byti
+cmp $RESULT,5
+je 5byti
+CMP $RESULT,6
+je 6byti
+cmp $RESULT,7
+je 7byti
+cmp $RESULT,8
+je next
+cmp $RESULT,9
+je next
+cmp $RESULT,A
+je Abyti
+cmp $RESULT,B
+je Bbyti
+
+next:
+GCI eip,SIZE
+add eip,$RESULT
+cmp eip,jmpfix2
+jb start
+cmp fixed,0
+jne end
+mov fixed,1
+jmp jmpfixer
+
+3byti:
+mov st,eip
+add st,2
+find eip,#80F8#
+cmp $RESULT,eip
+mov nooe,3c
+mov nooe2,F8
+je 3byti1
+find eip,#80E8#
+cmp $RESULT,eip
+mov nooe,2c
+mov nooe2,E8
+je 3byti1
+find eip,#80C0#
+cmp $RESULT,eip
+mov nooe,04
+mov nooe2,C0
+je 3byti1
+find st,#00#
+cmp $RESULT,st
+jne next
+find eip,#8?#
+cmp eip,$RESULT
+jne next
+fill st,1,90
+sub [eip+1],40
+jmp next
+
+3byti1: // CMP AL,x
+fill eip,1,nooe
+mov als,al
+mov cls,cl
+mov al,[st]
+mov cl,nooe2
+sub cl,al
+sub [eip+1],cl
+mov al,als
+mov cl,cls
+fill eip+2,1,90
+jmp next
+
+5byti:
+find eip,#6681F?#
+cmp eip,$RESULT
+jne next
+add [eip+1],2
+fill eip+4,1,90
+jmp next
+
+6byti:
+mov st,eip
+add st,2
+find eip,#0F8?#
+cmp $RESULT,eip
+je 6byti8
+find eip,#81E0#
+cmp eip,$RESULT
+je 6byti3
+find eip,#81F?#
+cmp eip,$RESULT
+je 6byti4
+find eip,#3A8?#
+cmp eip,$RESULT
+je 6byti5
+find eip,#3A9?#
+cmp eip,$RESULT
+je 6byti5
+find eip,#FF??#
+cmp eip,$RESULT
+je 6byti5
+find eip,#8B05#
+cmp $RESULT,eip
+mov nooe,a1
+je 6byti6
+find eip,#8905#
+cmp $RESULT,eip
+mov nooe,a3
+je 6byti6
+find eip,#8?8?#
+cmp eip,$RESULT
+je 6byti7
+find eip,#8?9?#
+cmp eip,$RESULT
+je 6byti7
+find eip,#89B?#
+cmp eip,$RESULT
+je 6byti7
+find st,#00000000#
+cmp $RESULT,st
+je 6byti2
+find st,#000000#
+cmp $RESULT,st+1
+jne next
+find eip,#8?#
+cmp eip,$RESULT
+jne next
+cmp [eip-1],0000007F
+ja next
+fill st+1,3,90
+sub [eip+1],40
+jmp next
+
+6byti4:  //CMP
+find st,#??FFFFFF#
+cmp st,$RESULT
+je cmp2
+cmp [st],00000080
+Jae cmp1
+cmp2:
+fill st+1,3,90
+add [eip],02
+jmp next
+
+cmp1:
+find eip,#81F?#
+cmp $RESULT,eip
+je cmp3
+find eip,#EBF8#
+cmp $RESULT,eip
+jne next
+cmp3:
+fill eip,1,3d
+mov [eip+1],[eip+2]
+fill st+3,1,90
+jmp next
+
+6byti3: //And
+cmp [st],00000080
+jae and1
+fill st+1,3,90
+add [eip],02
+jmp next
+
+and1:
+fill eip,1,25
+mov [eip+1],[st]
+fill st+3,1,90
+jmp next
+
+6byti5: //Call registers
+find st,#FFFFFF#
+cmp st+1,$RESULT
+je call1
+cmp [st],00000080
+jae next
+sub [eip+1],40
+fill st+1,3,90
+jmp next
+
+call1:
+sub [eip+1],40
+fill st+1,3,90
+jmp next
+
+6byti6: //Movs --> Mov eax,DWORD PTR DS:[xxxxxxx]
+fill eip,1,nooe
+mov [eip+1],[st]
+fill st+3,1,90
+jmp next
+
+6byti7: //mov Dwrod ptr ss:[ebp-18],eax
+find st,#??FFFFFF#
+cmp $RESULT,st
+je mov1
+cmp [st],00000080
+jae next
+sub [eip+1],40
+fill st+1,3,90
+jmp next
+
+mov1:
+cmp [st],FFFFFF80
+jb next
+sub [eip+1],40
+fill st+1,3,90
+jmp next
+
+6byti2:
+fill st,4,90
+sub [eip+1],80
+jmp next
+
+6byti8: //Fix jumps
+GCI eip,COMMAND
+ASM eip,$RESULT
+find eip,#0F8?#
+cmp eip,$RESULT
+je Longjmp
+mov [st],90909090
+jmp next
+
+Longjmp:
+mov message,"Long Jump finded at : "
+add message,eip
+log message
+jmp next
+
+Abyti:
+mov st,eip
+add st,6
+find st,#00000000#
+cmp st,$RESULT
+jne Abyti3
+sub st,4
+find st,#??FFFFFF#
+cmp st,$RESULT
+add st,4
+je Abyti2
+cmp [eip+2],0000007F
+ja Abyti1
+cmp [eip+2],000000000
+jne Abyti2
+fill eip+3,7,90
+sub [eip+1],80
+add [eip],02
+jmp next
+
+Abyti1:
+add [eip],02
+fill st+1,3,90
+jmp next
+
+Abyti2:
+add [eip],02
+sub [eip+1],40
+mov [eip+3],[st]
+fill eip+4,6,90
+jmp next
+
+Abyti3:
+find eip,#C780#
+cmp $RESULT,eip
+je Abyti4
+find eip,#C781#
+cmp $RESULT,eip
+je Abyti4
+find eip,#C782#
+cmp $RESULT,eip
+je Abyti4
+find eip,#C783#
+cmp $RESULT,eip
+je Abyti4
+find eip,#C784#
+cmp $RESULT,eip
+je Abyti4
+find eip,#C785#
+cmp $RESULT,eip
+je Abyti4
+find eip,#C786#
+cmp $RESULT,eip
+je Abyti4
+find eip,#C787#
+cmp $RESULT,eip
+je Abyti4
+find eip,#C705# //mov dword ptr ds:[679700],67452301
+cmp $RESULT,eip
+je next
+find eip,#81BF# //cmp dword ptr ds:[Edi+EC],0ff
+cmp $RESULT,eip
+je Abyti4
+cmp [eip+2],00000000
+jne Abyti2
+add [eip],02
+sub [eip+1],80
+mov [eip+2],[st]
+fill eip+3,7,90
+jmp next
+
+Abyti4:
+find eip,#??????FFFFFF#
+cmp eip,$RESULT
+je trueing
+cmp [eip+2],80
+jae next
+trueing:
+sub [eip+1],40
+mov [eip+3],[st]
+fill st+1,3,90
+jmp next
+
+Bbyti:
+mov st,eip
+add st,7
+sub [eip+1],40
+mov [eip+4],[st]
+fill st+1,3,90
+jmp next
+
+jmpfixer:
+mov eip,jmpfix
+find eip,#7???90909090#
+cmp $RESULT,jmpfix2
+jae copier
+cmp $RESULT,0
+je copier
+mov count,0
+mov eip,$RESULT
+mov sta,eip
+add sta,2
+mov shoro,eip
+GCI eip,DESTINATION
+mov payan,$RESULT
+cmp shoro,payan
+ja reverse
+beginsearch shoro
+
+nexting:
+findop shoro,#90#
+cmp $RESULT,0
+je ending
+cmp $RESULT,payan
+jae ending
+mov shoro,$RESULT+1
+add count,1
+jmp nexting
+
+ending:
+sub sta,1
+cmp rev,0
+jne reving
+sub [sta],count
+mov jmpfix,eip+1
+jmp jmpfixer
+
+reverse:
+mov dota,shoro
+mov shoro,payan
+mov payan,dota
+mov rev,1
+jmp nexting
+
+reving:
+add [sta],count
+mov jmpfix,eip+1
+mov rev,0
+jmp jmpfixer
+
+7byti:
+mov st,eip
+add st,2
+find st,#00000000#
+cmp st,$RESULT
+je 7byti1
+find eip,#0FB78?#
+cmp eip,$RESULT
+je 7byti3
+find eip,#F68?#
+cmp eip,$RESULT
+je 7byti6
+find eip,#668BB?#
+cmp eip,$RESULT
+je 7byti3
+find eip,#668B9?#
+cmp eip,$RESULT
+je 7byti3
+find st,#000000#
+cmp st+1,$RESULT
+je 7byti2
+find st,#????FFFFFF#
+cmp st,$RESULT
+je 7byti5
+find st,#????000000#
+cmp st,$RESULT
+je 7byti4
+jmp next
+
+7byti2:
+sub [eip+1],40
+mov [st+1],[st+4]
+fill st+2,3,90
+jmp next
+
+7byti1:
+mov [st],[st+4]
+fill st+1,4,90
+sub [eip+1],80
+jmp next
+
+7byti3:
+cmp [st+1],00000080
+jae next
+sub [st],40
+fill st+2,3,90
+jmp next
+
+7byti4:
+sub [eip+1],40
+fill st+2,3,90
+jmp next
+
+7byti5:
+sub [st],40
+fill st+2,3,90
+jmp next
+
+7byti6:
+cmp [st],00000080
+jae next
+sub [eip+1],40
+fill st+2,3,90
+jmp next
+
+4byti:
+mov st,eip
+add st,3
+find eip,#66??#
+cmp eip,$RESULT
+je next
+find st,#00#
+cmp st,$RESULT
+jne next
+sub [eip+1],40
+fill st,1,90
+jmp next
+
+copier:
+mov eip,jmpfix3
+mov sized,0
+cmp eip,jmpfix2
+je copyIt
+find eip,#E8#
+cmp $RESULT,eip
+mov avval,1
+je caller
+copier5:
+mov avval,0
+GCI eip,SIZE
+DM eip,$RESULT,"C:\temp.tmp"
+add sized,$RESULT
+add eip,$RESULT
+jmp copier2
+
+copier2:
+cmp eip,jmpfix2
+je copyIt
+find eip,#90#
+cmp $RESULT,eip
+je copier3
+find eip,#E8#
+cmp $RESULT,eip
+je caller
+copier4:
+GCI eip,SIZE
+add sized,$RESULT
+DMA eip,$RESULT,"C:\temp.tmp"
+copier3:
+GCI eip,SIZE
+add eip,$RESULT
+jmp copier2
+
+copyIt:
+lm opc,1000,"C:\temp.tmp"
+jmp starting
+
+caller:
+GCI eip,DESTINATION
+mov natije,$RESULT
+mov sized2,sized
+GCI eip,SIZE
+add sized2,$RESULT
+add sized2,opc
+sub natije,sized2
+mov [eip+1],natije
+cmp avval,1
+je copier5
+jmp copier4
+
+end:
+jmp Nexting

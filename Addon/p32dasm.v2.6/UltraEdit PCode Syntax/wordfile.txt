@@ -1,0 +1,97 @@
+/L13"P32Dasm by DARKER" Nocase Line Comment = " Nocase File Extensions = TXT
+/Delimiters = :
+/C1
+ AddCy  AddI2  AddI4  AddR4  AddR8  AddRef  AddUI1  AddVar  AndI4  AndUI1  AndVar  ArrayRebase1Var 
+ Ary1LdCy  Ary1LdFPR4  Ary1LdFPR8  Ary1LdI2  Ary1LdI4  Ary1LdPr  Ary1LdR8  Ary1LdRf  Ary1LdRfVar 
+ Ary1LdRfVarg  Ary1LdRfVargParam  Ary1LdUI1  Ary1LdVar  Ary1LdVarg  Ary1StAd  Ary1StAdFunc  Ary1StCy 
+ Ary1StFPR4  Ary1StFPR8  Ary1StI2  Ary1StI4  Ary1StR4  Ary1StStr  Ary1StStrCopy  Ary1StUI1  Ary1StVar 
+ Ary1StVarAd  Ary1StVarAdFunc  Ary1StVarCopy  Ary1StVarUnk  Ary1StVarUnkFunc  Ary1StVarg  Ary1StVargAd 
+ Ary1StVargAdFunc  Ary1StVargCopy  Ary1StVargUnk  Ary1StVargUnkFunc  AryDescTemp  AryInRecLdPr 
+ AryInRecLdRf  AryLdPr  AryLdRf  AryLock  AryUnlock  Assert  AssignRecord  BetweenCy  BetweenI2 
+ BetweenI4  BetweenR4  BetweenStr  BetweenTextStr  BetweenTextVar  BetweenUI1  BetweenVar  Bos 
+ BranchFVar  BranchFVarFree  BranchTVar  BranchTVarFree  CAdVar  CBoolCy  CBoolI4 
+ CBoolR4  CBoolStr  CBoolUI1  CBoolVar  CBoolVarNull  CCyI2  CCyI4  CCyR4  CCyStr  CCyVar  CDargRef 
+ CDargRefUdt  CDateR8  CDateStr  CExtInstUnk  CI2Cy  CI2I4  CI2R8  CI2Str  CI2UI1  CI2Var  CI4Cy  CI4R8 
+ CI4Str  CI4UI1  CI4Var  CR4I4  CR4R4  CR4R8  CR4Str  CR4Var  CR8Cy  CR8I2  CR8I4  CR8R4  CR8R8  CR8Str 
+ CR8Var  CRec2Ansi  CRec2Uni  CRecAnsi2Uni  CRecUni2Ansi  CRefVarAry  CSng  CStr2Ansi  CStr2Uni 
+ CStr2Vec  CStrAry2Ansi  CStrAry2Uni  CStrBool  CStrCy  CStrDate  CStrI2  CStrI4  CStrR4  CStrR8 
+ CStrUI1  CStrVar  CStrVarTmp  CStrVarVal  CUI1Bool  CUI1Cy  CUI1I2  CUI1I4  CUI1R4  CUI1Str  CUI1Var 
+ CUnkVar  CVar2Vec  CVarAd  CVarAryUdt  CVarAryVarg  CVarBoolI2  CVarCy  CVarDate  CVarDateVar 
+ CVarErrI4  CVarI2  CVarI4  CVarR4  CVarR8  CVarRef  CVarRefUdt  CVarStr  CVarUI1  CVarUdt  CVarUnk 
+ CVec2Var  CastAd  CastAdVar  CheckType  CheckTypeVar  Close  CloseAll  ConcatStr  ConcatVar  CopyBytes 
+ CopyBytesZero  DestructAnsiOFrame  DestructOFrame  DestructRecord  DivR8  DivVar  End  EqCy  EqCyR8 
+ EqI2  EqI4  EqR4  EqR8  EqStr  EqTextStr  EqTextVar  EqTextVarBool  EqVar  EqVarBool  EqvI4  EqvUI1 
+ EqvVar  Erase  EraseDestrKeepData  EraseDestruct  EraseNoPop  Error  ExitForAryVar  ExitForCollObj 
+ ExitForVar  ExitProc  ExitProcCb  ExitProcCbHresult  ExitProcCbStack  ExitProcCy  ExitProcFrameCb 
+ ExitProcFrameCbHresult  ExitProcFrameCbStack  ExitProcHresult  ExitProcI2  ExitProcR4  ExitProcR8 
+ ExitProcStr  ExitProcUI1  FDupStr  FDupVar  FFree1Ad  FFree1Str  FFree1Var  FFreeAd  FFreeStr  FFreeVar 
+ FLdFPR4  FLdFPR8  FLdI2  FLdLateIdUnkVar  FLdPr  FLdPrThis  FLdR4  FLdR8  FLdRfVar  FLdUI1  FLdVar 
+ FLdZeroAd  FLdZeroAry  FMemLdCy  FMemLdFPR4  FMemLdFPR8  FMemLdI2  FMemLdPr  FMemLdR4  FMemLdR8 
+ FMemLdRf  FMemLdUI1  FMemLdVar  FMemStAd  FMemStAdFunc  FMemStFPR4  FMemStFPR8  FMemStI2  FMemStI4 
+ FMemStR4  FMemStR8  FMemStStr  FMemStStrCopy  FMemStUI1  FMemStVar  FMemStVarAd  FMemStVarAdFunc 
+ FMemStVarCopy  FMemStVarUnk  FMemStVarUnkFunc  FStAd  FStAdFunc  FStAdFuncNoPop  FStAdNoPop  FStFPR4 
+ FStFPR8  FStI2  FStR4  FStR8  FStStr  FStStrCopy  FStStrNoPop  FStUI1  FStVar  FStVarAd  FStVarAdFunc 
+ FStVarCopy  FStVarCopyObj  FStVarNoPop  FStVarUnk  FStVarUnkFunc  FStVarZero  FnAbsCy  FnAbsI2  FnAbsI4 
+ FnAbsR4  FnAbsVar  FnCBoolVar  FnCByteVar  FnCCurVar  FnCDateVar  FnCDblCy  FnCDblR8  FnCDblVar 
+ FnCIntVar  FnCLngVar  FnCSngCy  FnCSngI2  FnCSngI4  FnCSngStr  FnCSngVar  FnCStrVar  FnFixCy  FnFixR8 
+ FnFixVar  FnInStr4  FnInStr4Var  FnInStrB4  FnInStrB4Var  FnIntCy  FnIntR8  FnIntVar  FnLBound  FnLenBStr 
+ FnLenBVar  FnLenStr  FnLenVar  FnSgnCy  FnSgnI4  FnSgnR4  FnSgnR8  FnSgnUI1  FnStrComp3  FnStrComp3Var 
+ FnUBound  ForCy  ForEachAryVar  ForEachCollAd  ForEachCollObj  ForEachCollVar  ForEachVar  ForEachVarFree 
+ ForI2  ForI4  ForR4  ForR8  ForStepCy  ForStepI2  ForStepI4  ForStepR4  ForStepR8  ForStepUI1  ForStepVar 
+ ForUI1  ForVar  FreeAdNoPop  FreeStrNoPop  FreeVarNoPop  GeCy  GeCyR8  GeI2  GeI4  GeR4  GeR8  GeStr 
+ GeTextStr  GeTextVar  GeTextVarBool  GeUI1  GeVar  GeVarBool  GetLastError  GetRec3  GetRec4 
+ GetRecFxStr3  GetRecFxStr4  GetRecOwn3  GetRecOwn4  GetRecOwner3  GetRecOwner4  Gosub  GtCy  GtCyR8  GtI2 
+ GtI4  GtR4  GtStr  GtTextStr  GtTextVar  GtTextVarBool  GtUI1  GtVar  GtVarBool  HardType  IDvI2  IDvI4 
+ IDvUI1  IDvVar  ILdAd  ILdDarg  ILdFPR4  ILdFPR8  ILdI2  ILdI4  ILdPr  ILdR8  ILdRf  ILdRfDarg  ILdUI1 
+ IStAd  IStAdFunc  IStDarg  IStDargAd  IStDargAdFunc  IStDargCopy  IStDargUnk  IStDargUnkFunc  IStFPR4 
+ IStFPR8  IStI2  IStI4  IStR8  IStStr  IStStrCopy  IStUI1  IStVarCopyObj  IWMemLdCy  IWMemLdDarg 
+ IWMemLdFPR4  IWMemLdFPR8  IWMemLdI2  IWMemLdI4  IWMemLdPr  IWMemLdRf  IWMemLdRfDarg  IWMemLdUI1  IWMemStAd 
+ IWMemStAdFunc  IWMemStCy  IWMemStDarg  IWMemStDargAd  IWMemStDargAdFunc  IWMemStDargCopy  IWMemStDargUnk 
+ IWMemStDargUnkFunc  IWMemStFPR4  IWMemStFPR8  IWMemStI2  IWMemStR4  IWMemStStr  IWMemStStrCopy  IWMemStUI1 
+ ImpAdCallCbFrame  ImpAdCallCy  ImpAdCallHresult  ImpAdCallNonVirt 
+ ImpAdCallR4  ImpAdCallR8  ImpAdCallUI1  ImpAdLdCy  ImpAdLdFPR4  ImpAdLdFPR8  ImpAdLdI2  ImpAdLdI4 
+ ImpAdLdPr  ImpAdLdRf  ImpAdLdStr  ImpAdLdUI1  ImpAdLdVar  ImpAdStAd  ImpAdStAdFunc  ImpAdStCy  ImpAdStFPR4 
+ ImpAdStFPR8  ImpAdStI2  ImpAdStR4  ImpAdStR8  ImpAdStStr  ImpAdStStrCopy  ImpAdStUI1  ImpAdStVar 
+ ImpAdStVarAd  ImpAdStVarAdFunc  ImpAdStVarCopy  ImpAdStVarUnk  ImpAdStVarUnkFunc  ImpI4  ImpUI1  ImpVar 
+ Input  InputDone  InputFile  InputItemBool  InputItemCy  InputItemDate  InputItemI2  InputItemI4 
+ InputItemR4  InputItemR8  InputItemStr  InputItemUI1  InputItemVar  InvalidExcode  Is  LargeBos 
+ LateIdCall  LateIdCallLdVar  LateIdCallSt  LateIdLdVar  LateIdNamedCall  LateIdNamedCallLdVar 
+ LateIdNamedCallSt  LateIdNamedStAd  LateIdSt  LateIdStAd  LateMemCall  LateMemCallLdVar  LateMemCallSt 
+ LateMemLdVar  LateMemNamedCall  LateMemNamedCallLdVar  LateMemNamedCallSt  LateMemNamedStAd  LateMemSt 
+ LateMemStAd  LdFixedStr  LdFrameRf  LdPrUnkVar  LdPrVar  LdStkRf  LeCy  LeCyR8  LeI2  LeI4  LeR4  LeR8 
+ LeStr  LeTextStr  LeTextVar  LeTextVarBool  LeUI1  LeVar  LeVarBool  LikeStr  LikeTextStr  LikeTextVar 
+ LikeTextVarBool  LikeVar  LikeVarBool  LineInputStr  LineInputVar  LitCy  LitCy4  LitDate  LitI2  LitI2FP 
+ LitI2_Byte  LitI4  LitNothing  LitR4FP  LitR8  LitR8FP  LitStr  LitVarCy  LitVarDate  LitVarI2  LitVarI4 
+ LitVarR4  LitVarR8  LitVarStr  LitVarUI1  LitVar_Empty  LitVar_FALSE  LitVar_Missing  LitVar_Null  LitVar_TRUE 
+ LockFile  LtCy  LtCyR8  LtI2  LtI4  LtR4  LtR8  LtStr  LtTextStr  LtTextVar  LtTextVarBool  LtUI1  LtVar 
+ LtVarBool  MemLdFPR4  MemLdFPR8  MemLdI2  MemLdPr  MemLdR4  MemLdR8  MemLdRfVar  MemLdStr  MemLdUI1  MemLdVar 
+ MemStAd  MemStAdFunc  MemStCy  MemStFPR4  MemStFPR8  MemStI2  MemStI4  MemStR4  MemStR8  MemStStr 
+ MemStStrCopy  MemStUI1  MemStVar  MemStVarAd  MemStVarAdFunc  MemStVarCopy  MemStVarUnk  MemStVarUnkFunc 
+ MidBStr  MidBStrB  MidBVar  MidStr  MidVar  ModI2  ModI4  ModUI1  ModVar  MulCy  MulCyI2  MulI2  MulI4  MulR4 
+ MulR8  MulUI1  MulVar  NameFile  NeCy  NeCyR8  NeI2  NeI4  NeR4  NeR8  NeStr  NeTextStr  NeTextVar 
+ NeTextVarBool  NeUI1  NeVar  NeVarBool  New  NewIfNullAd  NewIfNullPr  NewIfNullRf  NextEachAryVar 
+ NextEachCollAd  NextEachCollObj  NextEachCollVar  NextEachVar  NextI2  NextI4  NextR8  NextStepCy  NextStepI2 
+ NextStepI4  NextStepR4  NextStepR8  NextStepUI1  NextStepVar  NextUI1  NotI4  NotUI1  NotVar  OnErrorGoto 
+ OnGosub  OnGoto  OpenFile  OrI2  OrI4  OrVar  ParmAry1St  PopAd  PopAdLd4  PopAdLdVar  PopFPR4  PopFPR8 
+ PopTmpLdAd1  PopTmpLdAd2  PopTmpLdAd8  PopTmpLdAdFPR4  PopTmpLdAdFPR8  PopTmpLdAdStr  PopTmpLdAdVar  PrintChan 
+ PrintComma  PrintEos  PrintFile  PrintItemComma  PrintItemNL  PrintItemSemi  PrintNL  PrintObj  PrintObject 
+ PrintSpc  PrintTab  PutRec3  PutRec4  PutRecFxStr3  PutRecFxStr4  PutRecOwn3  PutRecOwn4  PutRecOwner3 
+ PutRecOwner4  PwrR8I2  PwrR8R8  PwrVar  RaiseEvent  Redim  RedimPreserve  RedimPreserveVar  RedimPreserveVarUdt 
+ RedimVar  RedimVarUdt  Resume  Return  SeekFile  SetLastSystemError  SetVarVar  SetVarVarFunc  StAryCopy 
+ StAryMove  StAryRecCopy  StAryRecMove  StAryVar  StFixedStr  StFixedStrFree  StFixedStrR  StFixedStrRFree 
+ StLsetFixStr  StUdtVar  Stop  SubCy  SubI2  SubI4  SubR4  SubUI1  SubVar  ThisVCall  ThisVCallAd 
+ ThisVCallCbFrame  ThisVCallCy  ThisVCallHidden  ThisVCallI2  ThisVCallR4  ThisVCallR8 
+ ThisVCallUI1  UMiCy  UMiI2  UMiI4  UMiR4  UMiR8  UMiVar  VCallAd  VCallCbFrame  VCallCy  VCallFPR8 
+ VCallR4  VCallR8  VCallStr  VCallUI1  VarIndexLdRfVar  VarIndexLdRfVarLock  VarIndexLdVar 
+ VarIndexSt  VarIndexStAd  VarLateMemCallLdRfVar  VarLateMemCallLdVar  VarLateMemCallSt  VarLateMemLdRfVar 
+ VarLateMemLdVar  VarLateMemSt  VarLateMemStAd  VerifyPVarObj  VerifyVarObj  WMemLdCy  WMemLdFPR4  WMemLdFPR8 
+ WMemLdI2  WMemLdRfVar  WMemLdStr  WMemLdUI1  WMemLdVar  WMemStAd  WMemStAdFunc  WMemStFPR4  WMemStFPR8 
+ WMemStI2  WMemStR4  WMemStR8  WMemStStr  WMemStStrCopy  WMemStUI1  WMemStVar  WMemStVarAd  WMemStVarAdFunc 
+ WMemStVarCopy  WMemStVarUnk  WMemStVarUnkFunc  WriteChan  WriteFile  XorI4  XorVar  ZeroRetVal  ZeroRetValVar 
+/C2
+ BranchF  BranchT  Branch 
+ Unknown
+/C3
+ ImpAdCallI2  ImpAdCallI4  ImpAdCallFPR4  ThisVCallHresult 
+/C4
+ VCallHresult

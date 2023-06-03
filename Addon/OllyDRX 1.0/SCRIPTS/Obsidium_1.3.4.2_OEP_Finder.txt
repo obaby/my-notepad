@@ -1,0 +1,53 @@
+/*
+    -=================================================================-
+                           .:[CracksLatinoS]:.                       
+        Script realizado por :       SOLID                                
+        Script para :              OBSIDIUM 1.3.4.2.a                                  
+        Configuracion:                                               
+        Fecha : 02/11/2007                                           
+                                                                     
+                    -=[ Comentario del Script ]=-                    
+                                                                     
+                                                                     
+                                                                     
+    -=================================================================-
+*/
+
+var api
+var cont
+msg "Ejecuta este script con todas las excepciones tildadas"
+
+inicio:
+cmp cont, 2
+je fin
+
+dbh
+gpa "CreateThread", "kernel32.dll"
+mov api, $RESULT
+log api
+add api,01f
+log api
+bp api
+
+eob corre
+run
+
+corre:
+
+inc cont
+jmp inicio
+
+fin:
+sto
+bprm 401000, 06c000
+
+eob sigue
+run
+
+sigue:
+bpmc
+bc api
+msg "Oep Found !!"
+
+ret
+

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899/12/30 00:00:00.000.dfm,K:\My NotePad\Config\config.dfm=K:\My NotePad\Unit3.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.dproj,K:\My NotePad\Project2.dproj=J:\Users\obaby\Documents\RAD Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.dfm,K:\My NotePad\Unit1.dfm=J:\Users\obaby\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.pas,K:\My NotePad\Config\config.pas=K:\My NotePad\Unit3.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.dfm,K:\My NotePad\about\Unit2.dfm=K:\My NotePad\Unit2.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.pas,K:\My NotePad\Unit1.pas=J:\Users\obaby\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.pas,K:\My NotePad\about\Unit2.pas=K:\My NotePad\Unit2.pas</Transaction>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="about"/>
+    <File Path="about\Unit2.pas"/>
+    <File Path="about\Unit2.dfm"/>
+    <File Path="Config"/>
+    <File Path="Config\config.pas"/>
+    <File Path="Config\config.dfm"/>
+    <File Path="Unit1.pas"/>
+    <File Path="Unit1.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

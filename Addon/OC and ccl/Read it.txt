@@ -1,0 +1,9 @@
+因为CCLdll.dll被一些杀软报警，所以把源码放出来（过去放过一次，但这次有些更新），
+大家自已修改编译。编译方法：
+
+ml /c /coff /Cp /nologo CCLdll.asm
+link /SUBSYSTEM:WINDOWS /RELEASE /DLL /DEF:ccldll.def ccldll.obj
+
+也可以用RadASM直接打开.rap文件
+
+

@@ -1,0 +1,376 @@
+16.11.2009 16:19:06 : Open File: C:\Documents and Settings\Administrator\桌面\LicenseServer.exe
+16.11.2009 16:19:06 : File size: 472512 bytes.
+16.11.2009 16:19:06 : Using PlugIn subsystem...
+16.11.2009 16:19:06 : UPX Unpacker PlugIn: Executing...
+16.11.2009 16:19:06 : UPX Unpacker PlugIn: not processed
+16.11.2009 16:19:06 : PE Explorer Demo PlugIn: not processed
+16.11.2009 16:19:06 : PE Explorer Demo Plugin in C: not processed
+16.11.2009 16:19:06 : Using default process...
+16.11.2009 16:19:06 : MS-DOS Header Size: 0040h
+16.11.2009 16:19:06 : MS-DOS Header: OK
+16.11.2009 16:19:06 : Next Header OFFSET: 0110h
+16.11.2009 16:19:06 : PE Signature: OK
+16.11.2009 16:19:06 : Calculating Checksum: SUCCESS (Header's Checksum: 00075DB8h / Real Checksum: 00075DB8h)
+16.11.2009 16:19:06 : EOF Extra Data From: 00072000h  (466944)
+16.11.2009 16:19:06 : Length of EOF Extra Data: 000015C0h  (5568) bytes.
+16.11.2009 16:19:06 : EOF Position: 000735C0h  (472512)
+16.11.2009 16:19:06 : Precompiling Resources...
+16.11.2009 16:19:06 : Done.
+16.11.2009 16:19:29 : Open File: C:\Documents and Settings\Administrator\桌面\RtxLcsMgr.dll
+16.11.2009 16:19:29 : File size: 234936 bytes.
+16.11.2009 16:19:29 : Using PlugIn subsystem...
+16.11.2009 16:19:29 : UPX Unpacker PlugIn: Executing...
+16.11.2009 16:19:29 : UPX Unpacker PlugIn: not processed
+16.11.2009 16:19:29 : PE Explorer Demo PlugIn: not processed
+16.11.2009 16:19:29 : PE Explorer Demo Plugin in C: not processed
+16.11.2009 16:19:29 : Using default process...
+16.11.2009 16:19:29 : MS-DOS Header Size: 0040h
+16.11.2009 16:19:29 : MS-DOS Header: OK
+16.11.2009 16:19:29 : Next Header OFFSET: 0118h
+16.11.2009 16:19:29 : PE Signature: OK
+16.11.2009 16:19:29 : Calculating Checksum: SUCCESS (Header's Checksum: 0003F648h / Real Checksum: 0003F6A8h)
+16.11.2009 16:19:29 : EOF Extra Data From: 00038000h  (229376)
+16.11.2009 16:19:29 : Length of EOF Extra Data: 000015B8h  (5560) bytes.
+16.11.2009 16:19:29 : EOF Position: 000395B8h  (234936)
+16.11.2009 16:19:29 : Precompiling Resources...
+16.11.2009 16:19:29 : Done.
+ 
+20.11.2009 16:42:47 : Open File: D:\ASM=CracK\freeRes0.94\freeRes.exe
+20.11.2009 16:42:47 : File size: 510464 bytes.
+20.11.2009 16:42:47 : Using PlugIn subsystem...
+20.11.2009 16:42:47 : UPX Unpacker PlugIn: Executing...
+20.11.2009 16:42:47 : UPX Unpacker PlugIn: not processed
+20.11.2009 16:42:47 : PE Explorer Demo PlugIn: not processed
+20.11.2009 16:42:47 : PE Explorer Demo Plugin in C: not processed
+20.11.2009 16:42:47 : Using default process...
+20.11.2009 16:42:47 : MS-DOS Header Size: 0040h
+20.11.2009 16:42:47 : MS-DOS Header: OK
+20.11.2009 16:42:47 : Next Header OFFSET: 0100h
+20.11.2009 16:42:47 : PE Signature: OK
+20.11.2009 16:42:47 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 00084EE4h)
+20.11.2009 16:42:47 : BOF Extra Data From: 00001000h  (4096)
+20.11.2009 16:42:47 : Length of BOF Extra Data: FFFFF600h  (-2560) bytes.
+20.11.2009 16:42:47 : EOF Position: 0007CA00h  (510464)
+20.11.2009 16:42:49 : Internal Error! (Step: Examining Resources)
+20.11.2009 16:42:49 : Errors detected! Opening file in SAFE MODE...
+20.11.2009 16:42:49 : Warning! Import section follows the Resource section.
+20.11.2009 16:42:49 : Done.
+ 
+23.11.2009 14:36:46 : Open File: C:\Program Files\VxD2009\unpack.exe
+23.11.2009 14:36:46 : File size: 507904 bytes.
+23.11.2009 14:36:46 : Using PlugIn subsystem...
+23.11.2009 14:36:46 : UPX Unpacker PlugIn: Executing...
+23.11.2009 14:36:46 : UPX Unpacker PlugIn: not processed
+23.11.2009 14:36:46 : PE Explorer Demo PlugIn: not processed
+23.11.2009 14:36:46 : PE Explorer Demo Plugin in C: not processed
+23.11.2009 14:36:46 : Using default process...
+23.11.2009 14:36:46 : MS-DOS Header Size: 0040h
+23.11.2009 14:36:46 : MS-DOS Header: OK
+23.11.2009 14:36:46 : Next Header OFFSET: 00B0h
+23.11.2009 14:36:46 : PE Signature: OK
+23.11.2009 14:36:46 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 0007DAEAh)
+23.11.2009 14:36:46 : EOF Position: 0007C000h  (507904)
+23.11.2009 14:36:46 : Warning! Section <.text> (0) extends beyond the raw file offset of section <.data> (1).
+23.11.2009 14:36:46 : Precompiling Resources...
+23.11.2009 14:36:47 : Done.
+ 
+24.11.2009 09:41:46 : Open File: D:\ASM=CracK\PEID0.95 + 2009最新识别库\PEID0.95 + 2009最新识别库\dumped_.exe
+24.11.2009 09:41:46 : File size: 716800 bytes.
+24.11.2009 09:41:46 : Using PlugIn subsystem...
+24.11.2009 09:41:46 : UPX Unpacker PlugIn: Executing...
+24.11.2009 09:41:46 : UPX Unpacker PlugIn: not processed
+24.11.2009 09:41:46 : PE Explorer Demo PlugIn: not processed
+24.11.2009 09:41:46 : PE Explorer Demo Plugin in C: not processed
+24.11.2009 09:41:46 : Using default process...
+24.11.2009 09:41:46 : MS-DOS Header Size: 0040h
+24.11.2009 09:41:46 : MS-DOS Header: OK
+24.11.2009 09:41:46 : Next Header OFFSET: 00F0h
+24.11.2009 09:41:46 : PE Signature: OK
+24.11.2009 09:41:46 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 000AFADCh)
+24.11.2009 09:41:46 : EOF Position: 000AF000h  (716800)
+24.11.2009 09:41:46 : Precompiling Resources...
+24.11.2009 09:41:46 : Done.
+ 
+24.11.2009 10:23:53 : Open File: D:\ASM=CracK\HA.PEiD.0.95\peid.exe
+24.11.2009 10:23:53 : File size: 706564 bytes.
+24.11.2009 10:23:53 : Using PlugIn subsystem...
+24.11.2009 10:23:53 : UPX Unpacker PlugIn: Executing...
+24.11.2009 10:23:53 : UPX Unpacker PlugIn: not processed
+24.11.2009 10:23:53 : PE Explorer Demo PlugIn: not processed
+24.11.2009 10:23:53 : PE Explorer Demo Plugin in C: not processed
+24.11.2009 10:23:53 : Using default process...
+24.11.2009 10:23:53 : MS-DOS Header Size: 0040h
+24.11.2009 10:23:54 : MS-DOS Header: OK
+24.11.2009 10:23:54 : Next Header OFFSET: 0100h
+24.11.2009 10:23:54 : PE Signature: OK
+24.11.2009 10:23:54 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 000B9786h)
+24.11.2009 10:23:54 : BOF Extra Data From: 00001000h  (4096)
+24.11.2009 10:23:54 : Length of BOF Extra Data: FFFFF400h  (-3072) bytes.
+24.11.2009 10:23:54 : EOF Position: 000AC804h  (706564)
+24.11.2009 10:23:54 : Precompiling Resources...
+24.11.2009 10:23:54 : Done.
+ 
+24.11.2009 10:41:13 : Open File: D:\ASM=CracK\HA.PEiD.0.95\peid.exe
+24.11.2009 10:41:13 : File size: 706560 bytes.
+24.11.2009 10:41:13 : Using PlugIn subsystem...
+24.11.2009 10:41:13 : UPX Unpacker PlugIn: Executing...
+24.11.2009 10:41:13 : UPX Unpacker PlugIn: not processed
+24.11.2009 10:41:13 : PE Explorer Demo PlugIn: not processed
+24.11.2009 10:41:13 : PE Explorer Demo Plugin in C: not processed
+24.11.2009 10:41:13 : Using default process...
+24.11.2009 10:41:13 : MS-DOS Header Size: 0040h
+24.11.2009 10:41:13 : MS-DOS Header: OK
+24.11.2009 10:41:13 : Next Header OFFSET: 0100h
+24.11.2009 10:41:13 : PE Signature: OK
+24.11.2009 10:41:13 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 000B94E7h)
+24.11.2009 10:41:13 : BOF Extra Data From: 00001000h  (4096)
+24.11.2009 10:41:13 : Length of BOF Extra Data: FFFFF400h  (-3072) bytes.
+24.11.2009 10:41:13 : EOF Position: 000AC800h  (706560)
+24.11.2009 10:41:13 : Precompiling Resources...
+24.11.2009 10:41:13 : Done.
+24.11.2009 10:41:57 : Saving new image file: Saving started...
+24.11.2009 10:41:57 : Recalculating the Section Headers...
+24.11.2009 10:41:57 : New Value of "SizeOfInitializedData": 00027000h
+24.11.2009 10:41:57 : Old "SizeOfImage": 000B0000h; New "SizeOfImage": 000B0000h; Change in "SizeOfImage": 00000000h
+24.11.2009 10:41:57 : New image file saved as: D:\ASM=CracK\HA.PEiD.0.95\peid1.exe
+24.11.2009 10:45:49 : Saving new image file: Saving started...
+24.11.2009 10:45:49 : Recalculating the Section Headers...
+24.11.2009 10:45:49 : Old "SizeOfImage": 000B0000h; New "SizeOfImage": 000B0000h; Change in "SizeOfImage": 00000000h
+24.11.2009 10:45:49 : New image file saved as: D:\ASM=CracK\HA.PEiD.0.95\22.exe
+24.11.2009 10:54:39 : Saving new image file: Saving started...
+24.11.2009 10:54:39 : Recalculating the Section Headers...
+24.11.2009 10:54:39 : Old "SizeOfImage": 000B0000h; New "SizeOfImage": 000B0000h; Change in "SizeOfImage": 00000000h
+24.11.2009 10:54:39 : New image file saved as: D:\ASM=CracK\HA.PEiD.0.95\33.exe
+ 
+24.11.2009 10:55:09 : Open File: D:\ASM=CracK\HA.PEiD.0.95\22.exe
+24.11.2009 10:55:09 : File size: 706560 bytes.
+24.11.2009 10:55:09 : Using PlugIn subsystem...
+24.11.2009 10:55:09 : UPX Unpacker PlugIn: Executing...
+24.11.2009 10:55:09 : UPX Unpacker PlugIn: not processed
+24.11.2009 10:55:09 : PE Explorer Demo PlugIn: not processed
+24.11.2009 10:55:09 : PE Explorer Demo Plugin in C: not processed
+24.11.2009 10:55:09 : Using default process...
+24.11.2009 10:55:09 : MS-DOS Header Size: 0040h
+24.11.2009 10:55:09 : MS-DOS Header: OK
+24.11.2009 10:55:09 : Next Header OFFSET: 0100h
+24.11.2009 10:55:09 : PE Signature: OK
+24.11.2009 10:55:09 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 000B9861h)
+24.11.2009 10:55:09 : BOF Extra Data From: 00001000h  (4096)
+24.11.2009 10:55:09 : Length of BOF Extra Data: FFFFF400h  (-3072) bytes.
+24.11.2009 10:55:09 : EOF Position: 000AC800h  (706560)
+24.11.2009 10:55:09 : Precompiling Resources...
+24.11.2009 10:55:09 : Done.
+24.11.2009 10:56:47 : Saving new image file: Saving started...
+24.11.2009 10:56:47 : Recalculating the Section Headers...
+24.11.2009 10:56:47 : Old "SizeOfImage": 000B0000h; New "SizeOfImage": 000B0000h; Change in "SizeOfImage": 00000000h
+24.11.2009 10:56:47 : New image file saved as: D:\ASM=CracK\HA.PEiD.0.95\33.exe
+ 
+24.11.2009 14:46:21 : Open File: E:\秘密花园日记本\MYsoft.dll
+24.11.2009 14:46:21 : File size: 133120 bytes.
+24.11.2009 14:46:21 : Using PlugIn subsystem...
+24.11.2009 14:46:21 : UPX Unpacker PlugIn: Executing...
+24.11.2009 14:46:21 : UPX Unpacker PlugIn: not processed
+24.11.2009 14:46:21 : PE Explorer Demo PlugIn: not processed
+24.11.2009 14:46:21 : PE Explorer Demo Plugin in C: not processed
+24.11.2009 14:46:21 : Using default process...
+24.11.2009 14:46:21 : MS-DOS Header Size: 0040h
+24.11.2009 14:46:21 : MS-DOS Header: OK
+24.11.2009 14:46:21 : Next Header OFFSET: 0080h
+24.11.2009 14:46:21 : PE Signature: OK
+24.11.2009 14:46:21 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 00025E1Eh)
+24.11.2009 14:46:21 : EOF Position: 00020800h  (133120)
+24.11.2009 14:46:21 : Precompiling Resources...
+24.11.2009 14:46:21 : Done.
+ 
+24.11.2009 14:46:45 : Open File: E:\秘密花园日记本\HappyDiary.exe
+24.11.2009 14:46:45 : File size: 584704 bytes.
+24.11.2009 14:46:45 : Using PlugIn subsystem...
+24.11.2009 14:46:45 : UPX Unpacker PlugIn: Executing...
+24.11.2009 14:46:45 : UPX Unpacker PlugIn: not processed
+24.11.2009 14:46:45 : PE Explorer Demo PlugIn: not processed
+24.11.2009 14:46:45 : PE Explorer Demo Plugin in C: not processed
+24.11.2009 14:46:45 : Using default process...
+24.11.2009 14:46:45 : MS-DOS Header Size: 0040h
+24.11.2009 14:46:45 : MS-DOS Header: OK
+24.11.2009 14:46:45 : Next Header OFFSET: 0080h
+24.11.2009 14:46:45 : PE Signature: OK
+24.11.2009 14:46:45 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 0009B64Eh)
+24.11.2009 14:46:45 : EOF Position: 0008EC00h  (584704)
+24.11.2009 14:46:45 : Precompiling Resources...
+24.11.2009 14:46:45 : Done.
+ 
+01.12.2009 14:01:35 : Open File: D:\Backup\我的文档\Tencent Files\289090351\FileRecv\nag.exe
+01.12.2009 14:01:35 : File size: 20480 bytes.
+01.12.2009 14:01:35 : Using PlugIn subsystem...
+01.12.2009 14:01:35 : UPX Unpacker PlugIn: Executing...
+01.12.2009 14:01:35 : UPX Unpacker PlugIn: not processed
+01.12.2009 14:01:35 : PE Explorer Demo PlugIn: not processed
+01.12.2009 14:01:35 : PE Explorer Demo Plugin in C: not processed
+01.12.2009 14:01:35 : Using default process...
+01.12.2009 14:01:35 : MS-DOS Header Size: 0040h
+01.12.2009 14:01:35 : MS-DOS Header: OK
+01.12.2009 14:01:35 : Next Header OFFSET: 00B8h
+01.12.2009 14:01:35 : PE Signature: OK
+01.12.2009 14:01:36 : Calculating Checksum: SUCCESS (Header's Checksum: 0000F79Eh / Real Checksum: 0000F79Eh)
+01.12.2009 14:01:36 : EOF Position: 00005000h  (20480)
+01.12.2009 14:01:36 : Precompiling Resources...
+01.12.2009 14:01:36 : Done.
+ 
+01.12.2009 14:30:22 : Open File: F:\记事本\记事本.exe
+01.12.2009 14:30:22 : File size: 1729536 bytes.
+01.12.2009 14:30:22 : Using PlugIn subsystem...
+01.12.2009 14:30:22 : UPX Unpacker PlugIn: Executing...
+01.12.2009 14:30:22 : UPX Unpacker PlugIn: not processed
+01.12.2009 14:30:22 : PE Explorer Demo PlugIn: not processed
+01.12.2009 14:30:22 : PE Explorer Demo Plugin in C: not processed
+01.12.2009 14:30:22 : Using default process...
+01.12.2009 14:30:22 : MS-DOS Header Size: 0040h
+01.12.2009 14:30:22 : MS-DOS Header: OK
+01.12.2009 14:30:22 : Next Header OFFSET: 0100h
+01.12.2009 14:30:22 : PE Signature: OK
+01.12.2009 14:30:22 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 001B3661h)
+01.12.2009 14:30:22 : EOF Position: 001A6400h  (1729536)
+01.12.2009 14:30:23 : Precompiling Resources...
+01.12.2009 14:30:23 : Done.
+ 
+13.01.2010 11:21:49 : Open File: C:\Documents and Settings\Administrator\桌面\家装预算管理平台\dumped_.exe
+13.01.2010 11:21:49 : File size: 29369220 bytes.
+13.01.2010 11:21:49 : Using PlugIn subsystem...
+13.01.2010 11:21:49 : UPX Unpacker PlugIn: Executing...
+13.01.2010 11:21:49 : UPX Unpacker PlugIn: not processed
+13.01.2010 11:21:49 : PE Explorer Demo PlugIn: not processed
+13.01.2010 11:21:49 : PE Explorer Demo Plugin in C: not processed
+13.01.2010 11:21:49 : Using default process...
+13.01.2010 11:21:49 : MS-DOS Header Size: 0040h
+13.01.2010 11:21:49 : MS-DOS Header: OK
+13.01.2010 11:21:49 : Next Header OFFSET: 0100h
+13.01.2010 11:21:49 : PE Signature: OK
+13.01.2010 11:21:49 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 01C05C51h)
+13.01.2010 11:21:49 : EOF Extra Data From: 00A04000h  (10502144)
+13.01.2010 11:21:49 : Length of EOF Extra Data: 011FE384h  (18867076) bytes.
+13.01.2010 11:21:49 : EOF Position: 01C02384h  (29369220)
+13.01.2010 11:21:50 : Precompiling Resources...
+13.01.2010 11:21:51 : Warning! Import section follows the Resource section.
+13.01.2010 11:21:51 : Done.
+ 
+14.01.2010 14:31:33 : Open File: C:\Documents and Settings\Administrator\桌面\家装预算管理平台\dumped_.exe
+14.01.2010 14:31:33 : File size: 29369220 bytes.
+14.01.2010 14:31:33 : Using PlugIn subsystem...
+14.01.2010 14:31:33 : UPX Unpacker PlugIn: Executing...
+14.01.2010 14:31:33 : UPX Unpacker PlugIn: not processed
+14.01.2010 14:31:33 : PE Explorer Demo PlugIn: not processed
+14.01.2010 14:31:33 : PE Explorer Demo Plugin in C: not processed
+14.01.2010 14:31:33 : Using default process...
+14.01.2010 14:31:33 : MS-DOS Header Size: 0040h
+14.01.2010 14:31:33 : MS-DOS Header: OK
+14.01.2010 14:31:33 : Next Header OFFSET: 0100h
+14.01.2010 14:31:33 : PE Signature: OK
+14.01.2010 14:31:33 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 01C05C51h)
+14.01.2010 14:31:33 : EOF Extra Data From: 00A04000h  (10502144)
+14.01.2010 14:31:33 : Length of EOF Extra Data: 011FE384h  (18867076) bytes.
+14.01.2010 14:31:33 : EOF Position: 01C02384h  (29369220)
+14.01.2010 14:31:34 : Precompiling Resources...
+14.01.2010 14:31:35 : Warning! Import section follows the Resource section.
+14.01.2010 14:31:35 : Done.
+ 
+21.01.2010 13:06:09 : Open File: C:\Documents and Settings\Administrator\桌面\XReplace.exe
+21.01.2010 13:06:09 : File size: 139264 bytes.
+21.01.2010 13:06:09 : Using PlugIn subsystem...
+21.01.2010 13:06:09 : UPX Unpacker PlugIn: Executing...
+21.01.2010 13:06:09 : UPX Unpacker PlugIn: not processed
+21.01.2010 13:06:09 : PE Explorer Demo PlugIn: not processed
+21.01.2010 13:06:09 : PE Explorer Demo Plugin in C: not processed
+21.01.2010 13:06:09 : Using default process...
+21.01.2010 13:06:09 : MS-DOS Header Size: 0040h
+21.01.2010 13:06:09 : MS-DOS Header: OK
+21.01.2010 13:06:09 : Next Header OFFSET: 00B8h
+21.01.2010 13:06:09 : PE Signature: OK
+21.01.2010 13:06:09 : Calculating Checksum: SUCCESS (Header's Checksum: 00026817h / Real Checksum: 00026817h)
+21.01.2010 13:06:09 : EOF Position: 00022000h  (139264)
+21.01.2010 13:06:09 : Precompiling Resources...
+21.01.2010 13:06:09 : Done.
+ 
+26.01.2010 16:44:05 : Open File: E:\秘密花园日记本\HappyDiary.exe
+26.01.2010 16:44:05 : File size: 584704 bytes.
+26.01.2010 16:44:05 : Using PlugIn subsystem...
+26.01.2010 16:44:05 : UPX Unpacker PlugIn: Executing...
+26.01.2010 16:44:05 : UPX Unpacker PlugIn: not processed
+26.01.2010 16:44:05 : PE Explorer Demo PlugIn: not processed
+26.01.2010 16:44:05 : PE Explorer Demo Plugin in C: not processed
+26.01.2010 16:44:05 : Using default process...
+26.01.2010 16:44:05 : MS-DOS Header Size: 0040h
+26.01.2010 16:44:05 : MS-DOS Header: OK
+26.01.2010 16:44:05 : Next Header OFFSET: 0080h
+26.01.2010 16:44:05 : PE Signature: OK
+26.01.2010 16:44:05 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 0009B64Eh)
+26.01.2010 16:44:05 : EOF Position: 0008EC00h  (584704)
+26.01.2010 16:44:05 : Precompiling Resources...
+26.01.2010 16:44:05 : Done.
+ 
+28.01.2010 10:57:34 : Open File: C:\Documents and Settings\Administrator\桌面\SmartKnitter.exe
+28.01.2010 10:57:34 : File size: 14771200 bytes.
+28.01.2010 10:57:34 : Using PlugIn subsystem...
+28.01.2010 10:57:34 : UPX Unpacker PlugIn: Executing...
+28.01.2010 10:57:34 : UPX Unpacker PlugIn: not processed
+28.01.2010 10:57:34 : PE Explorer Demo PlugIn: not processed
+28.01.2010 10:57:34 : PE Explorer Demo Plugin in C: not processed
+28.01.2010 10:57:34 : Using default process...
+28.01.2010 10:57:34 : MS-DOS Header Size: 0040h
+28.01.2010 10:57:34 : MS-DOS Header: OK
+28.01.2010 10:57:34 : Next Header OFFSET: 0200h
+28.01.2010 10:57:34 : PE Signature: OK
+28.01.2010 10:57:34 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 00E20847h)
+28.01.2010 10:57:34 : EOF Position: 00E16400h  (14771200)
+28.01.2010 10:57:35 : Precompiling Resources...
+28.01.2010 10:57:36 : Done.
+ 
+25.02.2010 13:44:40 : Open File: C:\Documents and Settings\Administrator\桌面\Crack me\ZENIX.EXE
+25.02.2010 13:44:40 : File size: 37233 bytes.
+25.02.2010 13:44:40 : Using PlugIn subsystem...
+25.02.2010 13:44:40 : UPX Unpacker PlugIn: Executing...
+25.02.2010 13:44:40 : UPX Unpacker PlugIn: not processed
+25.02.2010 13:44:40 : PE Explorer Demo PlugIn: not processed
+25.02.2010 13:44:40 : PE Explorer Demo Plugin in C: not processed
+25.02.2010 13:44:40 : Using default process...
+25.02.2010 13:44:40 : Error: This is NOT EXE or DLL File! Processing cancelled.
+25.02.2010 13:44:40 : Internal Error! (Step: Examining File Headers)
+25.02.2010 13:44:40 : Done.
+
+25.02.2010 15:05:00 : Open File: D:\ASM=CracK\AspackDie141\unpacked.ExE
+25.02.2010 15:05:00 : File size: 106496 bytes.
+25.02.2010 15:05:00 : Using PlugIn subsystem...
+25.02.2010 15:05:00 : UPX Unpacker PlugIn: Executing...
+25.02.2010 15:05:00 : UPX Unpacker PlugIn: not processed
+25.02.2010 15:05:00 : PE Explorer Demo PlugIn: not processed
+25.02.2010 15:05:00 : PE Explorer Demo Plugin in C: not processed
+25.02.2010 15:05:00 : Using default process...
+25.02.2010 15:05:00 : MS-DOS Header Size: 0040h
+25.02.2010 15:05:00 : MS-DOS Header: OK
+25.02.2010 15:05:00 : Next Header OFFSET: 00B8h
+25.02.2010 15:05:00 : PE Signature: OK
+25.02.2010 15:05:00 : Calculating Checksum: SUCCESS (Header's Checksum: 00000000h / Real Checksum: 00020B73h)
+25.02.2010 15:05:00 : BOF Extra Data From: 00000600h  (1536)
+25.02.2010 15:05:00 : Length of BOF Extra Data: 00000A00h  (2560) bytes.
+25.02.2010 15:05:00 : EOF Position: 0001A000h  (106496)
+25.02.2010 15:05:00 : Precompiling Resources...
+25.02.2010 15:05:00 : Done.
+ 
+26.04.2010 13:10:44 : Open File: K:\光盘刻录\btrace.exe
+26.04.2010 13:10:44 : File size: 2179152 bytes.
+26.04.2010 13:10:44 : Using PlugIn subsystem...
+26.04.2010 13:10:44 : UPX Unpacker PlugIn: Executing...
+26.04.2010 13:10:44 : UPX Unpacker PlugIn: not processed
+26.04.2010 13:10:44 : PE Explorer Demo PlugIn: not processed
+26.04.2010 13:10:44 : PE Explorer Demo Plugin in C: not processed
+26.04.2010 13:10:44 : Using default process...
+26.04.2010 13:10:44 : MS-DOS Header Size: 0040h
+26.04.2010 13:10:44 : MS-DOS Header: OK
+26.04.2010 13:10:44 : Next Header OFFSET: 0118h
+26.04.2010 13:10:44 : PE Signature: OK
+26.04.2010 13:10:44 : Calculating Checksum: SUCCESS (Header's Checksum: 0021BC72h / Real Checksum: 0021BC72h)
+26.04.2010 13:10:44 : EOF Extra Data From: 00213000h  (2174976)
+26.04.2010 13:10:44 : Length of EOF Extra Data: 00001050h  (4176) bytes.
+26.04.2010 13:10:44 : EOF Position: 00214050h  (2179152)
+26.04.2010 13:10:44 : Precompiling Resources...
+26.04.2010 13:10:44 : Done.
+ 

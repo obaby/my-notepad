@@ -1,0 +1,50 @@
+//////////////////////////////////////////////////
+//  FileName    :  PE Pack V1.0.osc
+//  Comment     :  OEP Find For PE Pack V1.0
+//  Environment :  WinXP SP2,OllyDbg V1.10,OllyScript V0.92
+//  Author      :  fly
+//  WebSite     :  http://www.unpack.cn
+//  Date        :  2005-10-03 21:45
+//////////////////////////////////////////////////
+#log
+
+
+MSGYN "Plz Clear All BreakPoints  And  Set Debugging Options : Events->Make First Pause at->WinMain !   "
+cmp $RESULT, 0
+je TryAgain
+
+//GameStart———————————————————————————————— 
+
+sto
+sto
+find eip, #61FFE0#
+cmp $RESULT, 0
+je NoFind
+add $RESULT,1
+eob Break
+bp $RESULT
+
+esto
+GoOn0:
+esto
+
+Break:
+cmp eip,$RESULT
+jne GoOn0
+bc $RESULT
+sto
+
+//GameOver———————————————————————————————— 
+
+log eip
+cmt eip, "This is the OEP! Found By: fly"
+MSG "Just : OEP !  Dump and Fix IAT.  Good Luck  "
+ret
+
+NoFind:
+MSG "Error! Maybe It's not PE Pack V1.0 ! "
+ret
+
+TryAgain:
+MSG " Plz  Try  Again   !   "
+ret

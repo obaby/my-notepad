@@ -1,0 +1,50 @@
+/*
+Script written by Joker_Italy
+Script   : ID ApplicationProtector - www.idsecuritysuite.com
+version  : v1.01
+Date     : 16-Sep-2008
+Test Environment : OllyDbg 1.1, ODBGScript 1.64, WINXP, WIN2000 
+*/
+
+
+var namefile
+var dump
+var oep
+var rva
+
+cmp $VERSION, "1.64"
+jb odbgver
+find eip,#89E981C1BA1E470089EA81C2BE1E47008B02030150C3#
+cmp $RESULT,0
+je quit
+mov oep,$RESULT
+bphws oep, "x"
+run
+bphwc oep
+find eip,#C3#
+cmp $RESULT,0
+je quit
+mov oep,$RESULT
+bphws oep, "x"
+run
+bphwc oep
+sti
+an eip
+GPI PROCESSNAME
+mov namefile, $RESULT
+eval "Joker_dump_{namefile}.exe" 
+dpe $RESULT, eip
+cmt eip, "This is OEP by Joker_Italy"
+GPI PROCESSNAME
+mov namefile, $RESULT
+mov rva, eip
+sub rva, 400000
+eval "Now Run ImpREc and Fix Joker_dump_{namefile}.exe , RVA OEP: --> {rva} " 
+MSG $RESULT
+MSG "Script by Joker_Italy,Thank you for using my script!"
+ret
+odbgver:
+msg "This script work with ODbgscript 1.64 or above"
+jmp quit
+quit:
+ret

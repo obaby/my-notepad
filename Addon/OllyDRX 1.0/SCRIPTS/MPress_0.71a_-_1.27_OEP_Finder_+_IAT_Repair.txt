@@ -1,0 +1,552 @@
+///////////////////////////////////////////////////////////////
+// FileName    :  MPRESS V0.71a-V1.27.By.fly[CUG].oSc        //
+// Comment     :  MPRESS V0.71a-V1.27.UnPacK                 //
+// Environment :  WinXP SP2,OllyDbg V1.10,OllyScript V1.65   //
+// Author      :  fly [CUG]                                  //
+// WebSite     :  http://www.unpack.cn                       //
+// Date        :  2008.08.16 12:00 + 2008.08.17 18:00        //
+///////////////////////////////////////////////////////////////
+#log
+LCLR
+LC
+dbh
+
+var T0
+var B0
+var B1
+var J1
+var EP
+var OEP
+var Time
+var ImageBase
+var e_lfanew
+var PE_Signature
+var IMAGE_DIRECTORY_ENTRY_BASERELOC
+var GoOEP
+var Relocation
+var RelocationRVA
+var RelocationSize
+var Dispose.RelocationTable
+
+
+		MSGYN "Plz Clear All BreakPoints + Make First Pause at:Entry Point Of Main Module !  Sorry,Can't decompression .NET executable files.   "
+		cmp $RESULT, 0
+			je @TryAgain
+		cmp $VERSION, "1.65" 
+			jb @CheckODbgScripVersion 
+		bphwc
+		bc
+		MSG "If you UnPacK DLL,Plz Make LordPE->Options->TaskViewer->Full Dump: Fix Header + Rebuild Image .   "
+	
+		
+//PE.Information！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+	
+		GMI eip,MODULEBASE
+		mov ImageBase,$RESULT
+	log ImageBase
+			
+		mov Temp,ImageBase
+		add Temp,3C
+		mov e_lfanew,[Temp]
+	log e_lfanew
+	
+		mov Temp,e_lfanew
+		add Temp,ImageBase
+		mov PE_Signature,Temp
+		log PE_Signature
+		
+		mov Temp,PE_Signature
+		add Temp,28
+		mov Temp,[Temp]
+		add Temp,ImageBase
+		mov EP,Temp
+	log EP 
+		
+		mov Temp,PE_Signature
+		add Temp,A0
+		mov IMAGE_DIRECTORY_ENTRY_BASERELOC,Temp
+	log IMAGE_DIRECTORY_ENTRY_BASERELOC
+
+//MPRESS.Version______________________________________				
+		
+		find EP,#575653515255E810000000E87A0000005D5A595B5E5FE984010000E8000000005805840100008B3003F02BC08BFE66ADC1E00C8BC8AD2BC803F18BC8498A4439067405880431EBF48804312BC0AC0AC074378AC8243F80E1C0C1E01066AD80F9C0741EF6C140750A8BC82BC0F3AA75FCEBD9#,ff
+		//MPRESS V0.71a-V0.75b
+		cmp $RESULT,0
+			jne @MPRESS.V0.71a_V0.75b.RelocationTable
+		
+		find EP,#60E80B000000E87700000061E975010000E8000000005805750100008B3003F02BC08BFE66ADC1E00C8BC8AD2BC803F18BC8498A4439067405880431EBF48804312BC03BFE733AAC0AC074358AC8243F80E1C0C1E01066AD80F9C0741CF6C14075088BC82BC0F3AAEBD78BD68BCF03F0E87E#,ff
+		//MPRESS V0.77b
+		cmp $RESULT,0
+			jne @MPRESS.V0.77b.RelocationTable
+				
+		find EP,#60E8000000005805480100008B3003F02BC08BFE66ADC1E00C8BC850AD2BC803F18BC857498A4439067405880431EBF48804312BC03BFE7328AC0AC074238AC8243FC1E01066AD80E140740F8BD68BCF03F0E85F00000003F8EBD88BC8F3A4EBD25E5A83EA052BC93BCA73258BD9AC4124FE3CE875F2#,ff
+		//MPRESS.V0.85
+		cmp $RESULT,0
+			jne @MPRESS.V0.85_V0.99
+		
+		find EP,#60E8000000005805490100008B3003F02BC08BFE66ADC1E00C8BC850AD2BC803F18BC857498A4439067405880431EBF48804312BC03BFE7328AC0AC074238AC8243FC1E01066AD80E140740F8BD68BCF03F0E86000000003F8EBD88BC8F3A4EBD25E5A83EA052BC93BCA73268BD9AC4124FE3CE875F2#,ff
+		//MPRESS V0.97-V0.99
+		cmp $RESULT,0
+			jne @MPRESS.V0.85_V0.99
+		
+/*MPRESS.V1.01-V1.05.EP
+003F7112    60                     pushad		*<->*
+003F7113    E8 00000000            call    003F7118
+003F7118    58                     pop     eax
+003F7119    05 B6020000            add     eax,2B6
+003F711E    8B30                   mov     esi,dword ptr ds:[eax]
+003F7120    03F0                   add     esi,eax
+003F7122    2BC0                   sub     eax,eax
+003F7124    8BFE                   mov     edi,esi
+003F7126    66:AD                  lodsw
+*/
+		find EP,#60E8000000005805????????8B3003F02BC08BFE66ADC1E00C8BC850AD2BC803F18BC85751498A4439067405880431EBF48804318BD68BCFE8560000005E5A83EA052BC93BCA73268BD9AC4124FE3CE875F24383C104AD0BC078063BC273E5EB0603C378DF03C22BC38946FCEBD6E8000000#,ff
+		//MPRESS V1.01-V1.05
+		cmp $RESULT,0
+			jne @MPRESS.V1.01_V1.05
+
+/*MPRESS.V0.85
+003C7249    33C0                   xor     eax,eax		*<->*
+003C724B    EB DF                  jmp     short 003C722C
+003C724D    5D                     pop     ebp
+003C724E    8BC7                   mov     eax,edi
+003C7250    59                     pop     ecx
+003C7251    2BC1                   sub     eax,ecx
+003C7253    5F                     pop     edi
+003C7254    5E                     pop     esi
+003C7255    5B                     pop     ebx
+003C7256    C3                     retn
+003C7257    E9 30CCFFFF            jmp     003C3E8C
+*/
+/*MPRESS.V0.97-V0.99
+0041B1E7    33C0                   xor     eax,eax		*<->*
+0041B1E9    EB DF                  jmp     short 0041B1CA
+0041B1EB    5D                     pop     ebp
+0041B1EC    8BC7                   mov     eax,edi
+0041B1EE    59                     pop     ecx
+0041B1EF    2BC1                   sub     eax,ecx
+0041B1F1    5F                     pop     edi
+0041B1F2    5E                     pop     esi
+0041B1F3    5B                     pop     ebx
+0041B1F4    C3                     retn
+0041B1F5    E9 D23AFFFF            jmp     0040ECCC
+*/		
+@MPRESS.V0.85_V0.99:
+		find EP, #33C0EB??5D8BC7592BC15F5E5BC3E9#
+		cmp $RESULT,0
+			je @MPRESS.V1.01_V1.05
+		add $RESULT,0E
+		mov B0,$RESULT
+	log B0
+		eob @B0
+		bp B0
+		
+		esto
+@GoOn0:
+		esto
+		
+@B0:
+		cmp eip,B0
+			jne @GoOn0
+		bc
+		esti				
+			jmp @MPRESS.V0.71a_V0.75b.RelocationTable
+			
+/*@MPRESS.V1.01-V1.05
+003F73BF    5F                     pop     edi
+003F73C0    5B                     pop     ebx
+003F73C1    8B45 F8                mov     eax,dword ptr ss:[ebp-8]
+003F73C4    5E                     pop     esi
+003F73C5    C9                     leave
+003F73C6    C2 0400                retn    4
+003F73C9  - E9 BECAFFFF            jmp     003F3E8C
+*/		
+@MPRESS.V1.01_V1.05:
+		find EP, #5F5B8B45F85EC9C20400E9#
+		//find EP, #2BC83BF10F8209FEFFFF5F5B8B45F85EC9C20400E9#
+		cmp $RESULT,0
+			je @NoFind
+		add $RESULT,0A
+		mov B1,$RESULT
+	log B1
+		eob @B1
+		bp B1
+		
+		esto
+@GoOn1:
+		esto
+		
+@B1:
+		cmp eip,B1
+			jne @GoOn1
+		bc
+		esti				
+			jmp @MPRESS.V1.01_V1.05.RelocationTable				
+
+
+//Dispose.RelocationTable______________________________________
+
+/*MPRESS.V0.71a-V0.75b.Dispose.RelocationTable
+003F71D0    8B78 04                mov     edi,dword ptr ds:[eax+4]			*<->*
+003F71D3    0BFF                   or      edi,edi
+003F71D5    74 53                  je      short 003F722A
+003F71D7    8B30                   mov     esi,dword ptr ds:[eax]
+003F71D9    03F0                   add     esi,eax
+003F71DB    2BF2                   sub     esi,edx
+003F71DD    8BEE                   mov     ebp,esi
+003F71DF    8BC2                   mov     eax,edx
+003F71E1    8B45 3C                mov     eax,dword ptr ss:[ebp+3C]
+003F71E4    03C5                   add     eax,ebp
+003F71E6    8B48 34                mov     ecx,dword ptr ds:[eax+34]
+003F71E9    2BCD                   sub     ecx,ebp
+003F71EB    74 3D                  je      short 003F722A
+003F71ED    E8 00000000            call    003F71F2
+003F71F2    58                     pop     eax
+003F71F3    05 DD000000            add     eax,0DD
+003F71F8    8B10                   mov     edx,dword ptr ds:[eax]
+003F71FA    03F2                   add     esi,edx
+003F71FC    03FE                   add     edi,esi
+003F71FE    2BC0                   sub     eax,eax
+003F7200    AD                     lodsd
+003F7201    3BF7                   cmp     esi,edi
+*/
+@MPRESS.V0.71a_V0.75b.RelocationTable:
+		find eip, #8B78040BFF74??8B3003F02BF28BEE8BC28B453C03C58B48342BCD743DE800000000#
+		cmp $RESULT,0
+			je @MPRESS.V0.77b.RelocationTable
+			jmp @Dispose.MPRESS.V0.71a_V0.77b.Relocation
+			
+/*MPRESS V0.77b.Dispose.RelocationTable
+003C71C8    8B78 04                mov     edi,dword ptr ds:[eax+4]			*<->*
+003C71CB    0BFF                   or      edi,edi
+003C71CD    74 42                  je      short 003C7211
+003C71CF    8B30                   mov     esi,dword ptr ds:[eax]
+003C71D1    03F0                   add     esi,eax
+003C71D3    2BF2                   sub     esi,edx
+003C71D5    8BEE                   mov     ebp,esi
+003C71D7    8B48 10                mov     ecx,dword ptr ds:[eax+10]
+003C71DA    2BCD                   sub     ecx,ebp
+003C71DC    74 33                  je      short 003C7211
+003C71DE    8B50 0C                mov     edx,dword ptr ds:[eax+C]
+003C71E1    03F2                   add     esi,edx
+003C71E3    03FE                   add     edi,esi
+*/
+@MPRESS.V0.77b.RelocationTable:
+		find eip, #8B78040BFF74??8B3003F02BF28BEE8B48102BCD74338B500C03F2#
+		cmp $RESULT,0
+			jne @Dispose.MPRESS.V0.71a_V0.77b.Relocation
+			jmp @MPRESS.V0.85_V0.99.RelocationTable
+
+@Dispose.MPRESS.V0.71a_V0.77b.Relocation:
+		mov B2,$RESULT
+	log B2
+		eob @B2
+		bp B2
+
+		esto
+@GoOn2:
+		esto
+
+@B2:
+		cmp eip,B2
+			jne @GoOn2
+		bc	
+			jmp @Relocation						
+					
+/*MPRESS V0.99.Dispose.RelocationTable
+003C3E8C    8B78 04                mov     edi,dword ptr ds:[eax+4]		*<->*
+003C3E8F    0BFF                   or      edi,edi
+003C3E91    74 45                  je      short 003C3ED8
+003C3E93    8B50 08                mov     edx,dword ptr ds:[eax+8]
+003C3E96    8B30                   mov     esi,dword ptr ds:[eax]
+003C3E98    03F0                   add     esi,eax
+003C3E9A    2BF2                   sub     esi,edx
+003C3E9C    8BEE                   mov     ebp,esi
+003C3E9E    8B48 10                mov     ecx,dword ptr ds:[eax+10]
+003C3EA1    2BCD                   sub     ecx,ebp
+003C3EA3    74 33                  je      short 003C3ED8
+003C3EA5    8B50 0C                mov     edx,dword ptr ds:[eax+C]
+003C3EA8    03F2                   add     esi,edx
+003C3EAA    03FE                   add     edi,esi
+003C3EAC    2BC0                   sub     eax,eax
+003C3EAE    AD                     lods    dword ptr ds:[esi]
+003C3EAF    3BF7                   cmp     esi,edi
+*/
+@MPRESS.V0.85_V0.99.RelocationTable:
+		find eip, #8B78088BD78B78040BFF74428B3003F02BF28BEE8B4810#
+		cmp $RESULT,0
+			jne @Relocation
+@MPRESS.V0.97_V0.99.RelocationTable:
+		find eip, #8B78040BFF74458B50088B3003F02BF28BEE8B48102BCD#
+		cmp $RESULT,0
+			je @EXE
+			jmp @Relocation				
+			
+/*MPRESS.V1.01-V1.05.Dispose.RelocationTable
+003F3E8C    8B78 04                mov     edi,dword ptr ds:[eax+4]		*<->*
+003F3E8F    0BFF                   or      edi,edi
+003F3E91    74 45                  je      short 003F3ED8
+003F3E93    8B50 08                mov     edx,dword ptr ds:[eax+8]
+003F3E96    8B30                   mov     esi,dword ptr ds:[eax]
+003F3E98    03F0                   add     esi,eax
+003F3E9A    2BF2                   sub     esi,edx
+003F3E9C    8BEE                   mov     ebp,esi
+003F3E9E    8B48 10                mov     ecx,dword ptr ds:[eax+10]
+003F3EA1    2BCD                   sub     ecx,ebp
+003F3EA3    74 33                  je      short 003F3ED8
+003F3EA5    8B50 0C                mov     edx,dword ptr ds:[eax+C]
+003F3EA8    03F2                   add     esi,edx
+*/
+@MPRESS.V1.01_V1.05.RelocationTable:
+		find eip, #8B78040BFF74458B50088B3003F02BF28BEE8B48102BCD#
+		cmp $RESULT,0
+			je @MPRESS.V1.25_V1.27.RelocationTable
+			jmp @Relocation	
+	
+/*MPRESS V1.25.Dispose.RelocationTable
+003C3E8C    8B78 04                mov     edi,dword ptr ds:[eax+4]		*<->*
+003C3E8F    0BFF                   or      edi,edi
+003C3E91    50                     push    eax
+003C3E92    74 45                  je      short 003C3ED9
+003C3E94    8B50 08                mov     edx,dword ptr ds:[eax+8]
+003C3E97    8B30                   mov     esi,dword ptr ds:[eax]
+003C3E99    03F0                   add     esi,eax
+003C3E9B    2BF2                   sub     esi,edx
+003C3E9D    8BEE                   mov     ebp,esi
+003C3E9F    8B48 10                mov     ecx,dword ptr ds:[eax+10]
+003C3EA2    2BCD                   sub     ecx,ebp
+*/	
+@MPRESS.V1.25_V1.27.RelocationTable:
+		find eip, #8B78040BFF5074458B50088B3003F02BF28BEE8B48102BCD#
+		cmp $RESULT,0
+			je @EXE
+			jmp @Relocation	
+
+/*MPRESS V1.27.Dispose.RelocationTable
+003C3E8C    8B78 04                mov     edi,dword ptr ds:[eax+4]		*<->*
+003C3E8F    0BFF                   or      edi,edi
+003C3E91    50                     push    eax
+003C3E92    74 45                  je      short 003C3ED9
+003C3E94    8B50 08                mov     edx,dword ptr ds:[eax+8]
+003C3E97    8B30                   mov     esi,dword ptr ds:[eax]
+003C3E99    03F0                   add     esi,eax
+003C3E9B    2BF2                   sub     esi,edx
+003C3E9D    8BEE                   mov     ebp,esi
+003C3E9F    8B48 10                mov     ecx,dword ptr ds:[eax+10]
+003C3EA2    2BCD                   sub     ecx,ebp
+003C3EA4    74 33                  je      short 003C3ED9
+003C3EA6    8B50 0C                mov     edx,dword ptr ds:[eax+C]
+003C3EA9    03F2                   add     esi,edx
+003C3EAB    03FE                   add     edi,esi
+003C3EAD    2BC0                   sub     eax,eax
+003C3EAF    AD                     lods    dword ptr ds:[esi]
+003C3EB0    3BF7                   cmp     esi,edi
+*/	
+@Relocation:
+		mov Dispose.RelocationTable,$RESULT
+	log Dispose.RelocationTable
+		mov RelocationSize,[eax+4]
+		cmp RelocationSize,0
+			je @EXE
+		eval "RelocationSize��{RelocationSize}"
+		mov [IMAGE_DIRECTORY_ENTRY_BASERELOC+4],RelocationSize
+	Log RelocationSize
+		
+		mov Temp,[eax+0C]
+		mov RelocationRVA,Temp
+		eval "RelocationRVA��{RelocationRVA}"
+		mov [IMAGE_DIRECTORY_ENTRY_BASERELOC],RelocationRVA
+	Log RelocationRVA
+
+
+//OEP______________________________________
+
+/*MPRESS V0.85.OEP	
+003C3F35    EB D7                  jmp     short 003C3F0E
+003C3F37    E8 00000000            call    003C3F3C		*<->*
+003C3F3C    5F                     pop     edi
+003C3F3D    81C7 50FFFFFF          add     edi,-0B0
+003C3F43    B0 E9                  mov     al,0E9
+003C3F45    AA                     stos    byte ptr es:[edi]
+003C3F46    B8 BF000000            mov     eax,0BF
+003C3F4B    AB                     stos    dword ptr es:[edi]
+003C3F4C    83C4 28                add     esp,28
+003C3F4F    61                     popad
+003C3F50    E9 74D2FFFF            jmp     003C11C9
+*/
+@EXE:
+@MPRESS.V0.85.OEP:
+		find eip, #EBD7E8000000005F81C7??FFFFFFB0E9AAB8??000000AB83????61E9#
+		cmp $RESULT,0
+			je @MPRESS.V0.99_V1.27.OEP
+		add $RESULT,1B
+			jmp @GoOEP
+			
+/*MPRESS V0.99.OEP			
+003C3F30    EB D7                  jmp     short 003C3F09
+003C3F32    E8 00000000            call    003C3F37
+003C3F37    5F                     pop     edi
+003C3F38    81C7 55FFFFFF          add     edi,-0AB
+003C3F3E    B0 E9                  mov     al,0E9
+003C3F40    AA                     stos    byte ptr es:[edi]
+003C3F41    B8 B7000000            mov     eax,0B7
+003C3F46    AB                     stos    dword ptr es:[edi]
+003C3F47    61                     popad
+003C3F48    E9 7CD2FFFF            jmp     003C11C9
+*/					
+/*MPRESS.V1.01-V1.05.OEP
+003F3F30    EB D7                  jmp     short 003F3F09
+003F3F32    E8 00000000            call    003F3F37
+003F3F37    5F                     pop     edi
+003F3F38    81C7 55FFFFFF          add     edi,-0AB
+003F3F3E    B0 E9                  mov     al,0E9
+003F3F40    AA                     stosb
+003F3F41    B8 B7000000            mov     eax,0B7
+003F3F46    AB                     stosd
+003F3F47    61                     popad
+003F3F48    E9 7CD2FFFF            jmp     003F11C9
+*/	
+/*MPRESS.V1.21-V1.27.OEP			
+003C3FA7    EB D7                  jmp     short 003C3F80
+003C3FA9    E8 00000000            call    003C3FAE
+003C3FAE    5F                     pop     edi
+003C3FAF    81C7 DEFEFFFF          add     edi,-122
+003C3FB5    B0 E9                  mov     al,0E9
+003C3FB7    AA                     stos    byte ptr es:[edi]
+003C3FB8    B8 2E010000            mov     eax,12E
+003C3FBD    AB                     stos    dword ptr es:[edi]
+003C3FBE    61                     popad
+003C3FBF    E9 05D2FFFF            jmp     003C11C9
+*/	
+@MPRESS.V0.99_V1.27.OEP:
+		find eip, #EBD7E8000000005F81C7????????B0E9AAB8????????AB61E9#
+		cmp $RESULT,0
+			je @MPRESS.V0.71a_V0.75b.DeCode
+		add $RESULT,18
+			jmp @GoOEP			
+			
+@GoOEP:
+		mov GoOEP,$RESULT
+		eob @B3
+		BP GoOEP
+			jmp @GoOn3			
+		
+@MPRESS.V0.71a_V0.75b.DeCode:
+		find eip, #33C0EBDF5D8BC7592BC15F5E5BC3E9#
+		cmp $RESULT,0
+			je @NoFind
+		add $RESULT,0E
+		mov B3,$RESULT
+	log B3
+		eob @B3
+		bp B3
+
+		esto
+@GoOn3:
+		esto
+
+@B3:
+		cmp eip,GoOEP
+			je 	@GameOver
+		cmp eip,B3
+			jne @GoOn3
+//jmp @GameOver
+		esti
+
+/*MPRESS V0.71a-V0.75b.OEP
+00406232    5F              pop edi
+00406233    81C7 9AFFFFFF   add edi,-66
+00406239    B0 E9           mov al,0E9
+0040623B    AA              stos byte ptr es:[edi]
+0040623C    B8 79000000     mov eax,79
+00406241    AB              stos dword ptr es:[edi]
+00406242    83C4 28         add esp,28
+00406245    5E              pop esi
+00406246    5F              pop edi
+00406247    5B              pop ebx
+00406248    5A              pop edx
+00406249    59              pop ecx
+0040624A    E9 7DAEFFFF     jmp 004010CC
+*/
+@MPRESS.V0.71a.OEP:
+		find eip, #5F81C7??FFFFFFB0E9AAB8??000000AB83C4285E5F5B5A59E9#
+		cmp $RESULT,0
+			je @MPRESS.V0.75b_V0.92.OEP
+		add $RESULT,18
+			jmp @OEP
+			
+/*MPRESS V0.77b.OEP
+0040617B    5F              pop edi
+0040617C    81C7 9DFFFFFF   add edi,-63
+00406182    B0 E9           mov al,0E9
+00406184    AA              stos byte ptr es:[edi]
+00406185    B8 72000000     mov eax,72
+0040618A    AB              stos dword ptr es:[edi]
+0040618B    83C4 28         add esp,28
+0040618E    61              popad
+0040618F    E9 38AFFFFF     jmp 004010CC
+*/
+/*MPRESS V0.92.OEP
+0040EF9D    E8 00000000            call    0040EFA2
+0040EFA2    5F                     pop     edi
+0040EFA3    81C7 50FFFFFF          add     edi,-0B0
+0040EFA9    B0 E9                  mov     al,0E9
+0040EFAB    AA                     stos    byte ptr es:[edi]
+0040EFAC    B8 BF000000            mov     eax,0BF
+0040EFB1    AB                     stos    dword ptr es:[edi]
+0040EFB2    83C4 28                add     esp,28
+0040EFB5    61                     popad
+0040EFB6    E9 D1B2FFFF            jmp     0040A28C
+*/
+@MPRESS.V0.75b_V0.92.OEP:
+		find eip, #5F81C7??FFFFFFB0E9AAB8??000000AB83C42861E9#
+		cmp $RESULT,0
+			je @NoFind
+		add $RESULT,14
+			jmp @OEP		
+
+@OEP:
+		mov B4,$RESULT
+	log B4
+		eob @B4
+		bp B4
+
+		esto
+@GoOn4:
+		esto
+
+@B4:
+		cmp eip,B4
+		jne @GoOn4
+		bc B4		
+		
+
+//GameOver______________________________________ 
+
+@GameOver:
+		BC
+		tick Time
+		eval "Time Since Script Startup��{Time} Microsecond"
+	log $RESULT
+		cmt eip,$RESULT
+		esti
+		
+		mov OEP,eip
+		eval "OEP VA��{OEP}"
+	log OEP
+		cmt eip, "OEP found By: fly[CUG] "                              
+		msg "OEP Found By: fly[CUG] .  Plz Dump and Fix IAT.  Good Luck !   "
+		ret                       
+
+@NoFind:
+		BC
+		msg "Error! Don't find.     "
+		ret
+
+@CheckODbgScripVersion:
+		msg  "ODBGScript Version Need 1.65 or higher!"
+		ret
+
+@TryAgain:
+		msg " Plz  Try  Again   !   "
+		ret

@@ -1,0 +1,336 @@
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<FONT COLOR="#FFFFFF"></FONT><HTML>
+<HEAD>
+<TITLE>Delphi Reversing-Commercial Stupidy</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF TEXT=#001010 VLINK=#405040>
+
+
+</b></font></font>
+
+
+<p align="center"><font size="+2"> Delphi reversing</font><br>
+  &nbsp;<font size="+1">Commercial stupidity</font><br>
+  <font color="blue"> Written by LaptoniC</font><br>
+</p>
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+  <tr>
+    <td bgcolor="#C0C0C0">
+      <center>
+        <font size=+2 color="blue">Introduction </fonT> 
+      </center>
+    </td>
+  </tr>
+</table>
+<pre>
+My target is written in delphi, it is packed with Aspack v1.083 and it use harddisk properties
+for serial calculation.Therefore only two approach is possible, first make a inline or memory
+patch, or make keygen.I will try to explain this two approaches.My language and knowledge is 
+so poor therefore if something is wrong please accuse me and say the error via e-mail.
+</prE>
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+  <tr>
+    <td bgcolor="#C0C0C0">
+      <center>
+        <font size=+2 color="blue">Tools required </fonT> 
+      </center>
+    </td>
+  </tr>
+</table>
+<pre>SoftICE 
+<a href="http://www.balbaro.com">Dede v2.34</a>
+Delphi and <a href="http://www.chat.ru/~borodach">Tcryptlib</a> component if you want to code keygen.   </pre>
+<!-- <H5>Note by xavier : you can find the file TCRYPT.DSF  <A HREF="/dede/files/tcrypt.dsf">here</A> </H5>  -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+  <tr>
+    <td bgcolor="#C0C0C0">
+      <center>
+        <font size=+2 color="blue">Target's URL/FTP </fonT> 
+      </center>
+    </td>
+  </tr>
+</table>
+<pre><a href="http://www.bsoft.com.tr">www.bsoft.com.tr</a>  go to e-cafe link and download the demo version&nbsp;  
+   </pre>
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+  <tr>
+    <td bgcolor="#C0C0C0">
+      <center>
+        <font size=+2 color="blue">Program History </fonT> 
+      </center>
+    </td>
+  </tr>
+</table>
+<pre>None.   </pre>
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+  <tr>
+    <td bgcolor="#C0C0C0">
+      <center>
+        <font size=+2 color="blue">Essay</fonT> 
+      </center>
+    </td>
+  </tr>
+</table>
+<pre>As I said before there is two approach first is patch and other is keygen
+
+
+<b><font size="4">PATCH:</font></b>
+The first step is finding the comparison.Open e-cafe and click the surfing man button and
+choose &quot;Kayýt iþlemi&quot;.You will see three edit boxes for serial.Write something switch to 
+SoftICE and click &quot;Tamam&quot; button.<i>( If you want to make your SoftICE session easier you can
+make sym file with the help of Dede.Go to export section and make map file.Then convert this 
+map file to sym file and you are ready to go.)</i>After several F12's you will land E-cafe's code.
+Follow the code and stop when you see this.
+
+
+004DC60C 8D45FC                  lea eax, dword ptr [ebp-04]  
+004DC60F BA05000000              mov edx, 00000005            
+004DC614 E87379F2FF              call 00403F8C                
+004DC619 8B45F8                  mov eax, dword ptr [ebp-08]<font color="#008080">;our serial</font>  
+004DC61C 8B55FC                  mov edx, dword ptr [ebp-04]<font color="#008080">;real serial</font>  
+004DC61F E8B879F2FF              call 00403FDC              <font color="#008080">;compare</font>  
+004DC624 0F85E2000000            jne 004DC70C               <font color="#008080">;if not equal jump to bad boy</font> 
+         
+       
+.....
+004DC70C B148                    mov cl, 48           <font color="#008080">;message box style (error)</font> 
+004DC70E BA18C84D00              mov edx, 004DC818   <font color="#008080"> ;Title of message  </font>   
+004DC713 B8DCC84D00              mov eax, 004DC8DC    <font color="#008080">;message content</font>     
+004DC718 E8AF610000              call 004E28CC        <font color="#008080">;Show message</font>     
+
+
+Most easy way is send good serial to message box.Therefore when we enter bad serial program 
+will show good serial.Lets test our patch in memory when you are at 004DC713 type a and enter.
+Then write 
+
+004DC70C B149             	     mov      cl,49        <font color="#008080">;messagebox style (info) :)</font>
+004DC70E BA18C84D00    		     mov      edx,004DC81  <font color="#008080">;Title of message</font>
+004DC713 8B45FC          	     mov      eax,[ebp-04] <font color="#008080">;Real serial</font>      
+004DC716 90        	             nop                   <font color="#008080">;to fill space</font>
+004DC717 90        	             nop                   </prE>
+<pre>As you know, patching packed program cant be done directly.You can use memory patchers like 
+risc's process patcher or you can make inline patch.Here is the end of unpacker routine as 
+you probably know...
+...
+
+ 8944241C            MOV       [ESP+1C], EAX
+ 61                  POPAD
+ 7508                JNZ       00681563 ; you probaly think to change this jump to your patch
+ B801000000          MOV       EAX,00000001
+ C20C00              RET       000C
+ 50                  PUSH      EAX
+ 55                  RET
+
+
+If you search 7508B801000000 you wouldn't find anything.Because loader itself is packed too.
+Therefore,you should patch loader, then program.It is long process and I am not professional 
+on this subject, (any help or tutorial ? )so I used Aspatch and it works pretty good.
+Thanks Chafe.First part done.Lets go to second part and make a keygen.
+Note:You may think to change 004DC619 so that it sends real serial to eax.However, when program
+write serial to registry it use a value at [ebp-08].Therefore it shows thank you message but
+it writes bad serial to registry.</prE>
+<pre><b><font size="4">KEYGEN:</font></b></prE>
+<pre>Here comes Dede's show.In order to disassemble with dede you should unpack it or you can use 
+Dede's powerful tool &quot;Process dumper&quot;.Open first Ecafe than Dede.Goto Tools/Dump Active 
+Process.Choose Ecafe from process list and dump it.Wait a little bit and you will have super 
+disassembly of our program.Lets find our registration screen.Go to Procedures and choose kayit.
+You will see some events.Click the BitBtn1Click event and scroll down a little bit.</prE>
+<pre><font color="blue">* Possible String Reference to: "B27U03L88E"</font>
+|
+004DC55D   BA04C84D00             mov     edx, $004DC804
+004DC562   E8794FF7FF             call    004514E0
+
+...
+
+What is this <font color="blue">"B27U03L88E"</font> lets click call at 4DC562 you will see this..
+</prE>
+<pre>
+<font color="blue">* Reference to: System..LStrClr()</font>
+|
+00451510   E83B27FBFF             call    00403C50
+
+<font color="blue">* Possible String Reference to: "Password is too long"</font>  <font color="#008080">;Aha :)</font>
+|
+00451515   B964154500             mov     ecx, $00451564
+0045151A   B201                   mov     dl, $01
+0045151C   A198704000             mov     eax, dword ptr [$407098]
+
+Again.Commercial stupidity.They use component tcryptlib.Lets search what is this component and
+what we can do.I found this component at <a href="http://www.chat.ru/%7Eborodach">http://www.chat.ru/~borodach</a> .I have downloaded it and
+looked what is going on.It is simple xor algorithm.I disassembled sample exe file and try to 
+identify what is what.There is 3 elements in this component; password, addkey,multkey.Addkey
+and multkey is integer values.When you encrypt string first password is pushed then addkey,
+multkey lastly string to encrypted is pushed.Lets look again our source.In order to make our
+disassembly more comprehensive lets make DSF file for this componet.What is DSF File ?
+
+<i>&quot;DSF files contain the symbols of the exports from different BPL libraries. DeDe disassemble 
+engine use this symbol files to comment the class members method calls in ASM source it
+generates. The ideology is very close to the IDA symbol files for VCL, MFC etc.&quot;
+
+</i>In order to make DSF file you need Delphi.Open delphi and install our component.After install 
+you will have .bpl file in the projects/bpl directory of your delphi.Open Dede go to Tools/Bpl
+Dumper and dump it.After dump, load this dsf file to Dede.If you dont have Delphi to make dsf 
+file, you can download from <a href="files/tcrypt.dsf">here</a>.I suggest you to add this dsf file to default dsfs via option
+menu.Lets load again our target and look what we have now.<font color="green">
+* Possible String Reference to: "B27U03L88E"</font>
+|
+004DC55D   BA04C84D00             mov     edx, $004DC804
+<font color="#0000FF">* Reference to: Kbcrypt.TCryptLib.WriteFPassword(System.AnsiString)</font> <font color="#008080">;super comment!</font>
+|
+004DC562   E8794FF7FF             call    004514E0
+004DC567   A1C4F94E00             mov     eax, dword ptr [$4EF9C4]
+004DC56C   8B00                   mov     eax, [eax]
+004DC56E   8B8064020000           mov     eax, [eax+$0264]
+004DC574   BA9AAF3F00             mov     edx, $003FAF9A <font color="#008080">;addkey=4173722 (as decimal)</font>
+004DC579   E86250F7FF             call    004515E0 <font color="#008080">;control addkey length</font>
+004DC57E   A1C4F94E00             mov     eax, dword ptr [$4EF9C4]
+004DC583   8B00                   mov     eax, [eax]
+004DC585   8B8064020000           mov     eax, [eax+$0264]
+004DC58B   BA3EC22300             mov     edx, $0023C23E <font color="#008080">;multkey=2343486 (as decimal)</font>
+004DC590   E8EF4FF7FF             call    00451584 <font color="#008080">;control multkey length</font>
+004DC595   8D4DFC                 lea     ecx, [ebp-$04]
+004DC598   A1C4F94E00             mov     eax, dword ptr [$4EF9C4]
+004DC59D   8B00                   mov     eax, [eax]
+004DC59F   8B9048030000           mov     edx, [eax+$0348] <font color="#008080">;string to be crypted</font>
+004DC5A5   A1C4F94E00             mov     eax, dword ptr [$4EF9C4]
+004DC5AA   8B00                   mov     eax, [eax]
+004DC5AC   8B8064020000           mov     eax, [eax+$0264]
+<font color="blue">* Reference to: Kbcrypt.TCryptLib.EncryptStr(System.AnsiString) <font color="#008080">;Yes!</font>
+</font>|
+004DC5B2   E85D54F7FF             call    00451A14  <font color="#008080">;crypt it</font>
+004DC5B7   8D45E8                 lea     eax, [ebp-$18]
+004DC5BA   50                     push    eax
+004DC5BB   B904000000             mov     ecx, $00000004 <font color="#008080">;4 chars to copy</font>
+004DC5C0   BA01000000             mov     edx, $00000001 <font color="#008080">;from 1st position</font>
+004DC5C5   8B45FC                 mov     eax, [ebp-$04] 
+
+<font color="blue">* Reference to: System..LStrCopy()</font>
+|
+004DC5C8   E8037BF2FF             call    004040D0   <font color="#008080">;copy it</font>
+004DC5CD   FF75E8                 push    dword ptr [ebp-$18]
+004DC5D0   68F8C74D00             push    $004DC7F8
+004DC5D5   8D45E4                 lea     eax, [ebp-$1C]
+004DC5D8   50                     push    eax
+004DC5D9   B904000000             mov     ecx, $00000004 <font color="#008080">;4 chars to copy</font>
+004DC5DE   BA09000000             mov     edx, $00000009 <font color="#008080">;from 9th position</font>
+004DC5E3   8B45FC                 mov     eax, [ebp-$04]
+
+<font color="blue">* Reference to: System..LStrCopy()</font>
+|
+004DC5E6   E8E57AF2FF             call    004040D0      <font color="#008080">;copy it</font>
+004DC5EB   FF75E4                 push    dword ptr [ebp-$1C]
+004DC5EE   68F8C74D00             push    $004DC7F8
+004DC5F3   8D45E0                 lea     eax, [ebp-$20]
+004DC5F6   50                     push    eax
+004DC5F7   B904000000             mov     ecx, $00000004 <font color="#008080">;4 chars to copy</font>
+004DC5FC   BA11000000             mov     edx, $00000011 <font color="#008080">;from 17. position</font>
+004DC601   8B45FC                 mov     eax, [ebp-$04]
+
+<font color="blue">* Reference to: System..LStrCopy()</font>
+|
+004DC604   E8C77AF2FF             call    004040D0 <font color="#008080">;copy it</font>
+004DC609   FF75E0                 push    dword ptr [ebp-$20]
+004DC60C   8D45FC                 lea     eax, [ebp-$04]
+004DC60F   BA05000000             mov     edx, $00000005
+
+<font color="blue">* Reference to: System..LStrCatN()</font>
+|
+004DC614   E87379F2FF             call    00403F8C <font color="#008080">;stick together</font>
+004DC619   8B45F8                 mov     eax, [ebp-$08] <font color="#008080">;our serial</font>
+004DC61C   8B55FC                 mov     edx, [ebp-$04] <font color="#008080">;real serial</font>
+
+<font color="blue">* Reference to: System..LStrCmp()</font>
+|
+004DC61F   E8B879F2FF             call    00403FDC   <font color="#008080">;compare it</font>
+004DC624   0F85E2000000           jnz     004DC70C   <font color="#008080">;jump bad boy</font>
+
+Wow everything is clear now!.Our password is B27U03L88E addkey=4173722, multkey=2343486
+We know it encrypts edx at 4DC59F with the cryptlib.After crypt,it strips some values and 
+this is our serial.For example lets say after encryption we have <font color="blue">2017</font>F93F<font color="blue">E82F</font>1A35<font color="blue">302B</font> then our
+serial is 2017-E82F-302B.Ok our problem is to find where this string comes from at 4DC59F.Lets
+fireup SoftICE and trace the code.When you are at 4DC59F look what is in edx by typing d edx.
+I saw WM6231132186.Program get this number via deviceiocontrol.It is somehow related with our 
+harddisk properties.(I am not talking about the 8 digit hex number which can be get via 
+getvolumeinformation).If you look the classes tab in Dede you will see that this program use 
+Hdinfo component.I dont know the parameters to get this number via DeviceIocontrol.You can 
+try if you want.Lets think again.There must be a relation between &quot;Referans No:&quot; and our serial
+or our Harddisk number.How can they know our harddisk number ? Lets go back to dede and click 
+FormActivate at events sections.
+
+
+
+<font color="green">* Possible String Reference to: "I28R08E64M" </font>  <font color="#008080">;password</font>
+|
+004DC203   BA98C34D00             mov     edx, $004DC398
+<font color="#0000FF">* Reference to: Kbcrypt.TCryptLib.WriteFPassword(System.AnsiString)</font> <font color="#008080">;super comment!</font>
+004DC208   E8D352F7FF             call    004514E0
+004DC20D   8B07                   mov     eax, [edi]
+004DC20F   8B8064020000           mov     eax, [eax+$0264]
+004DC215   BAEDA62B00             mov     edx, $002BA6ED <font color="#008080">;addkey=2860781</font>
+004DC21A   E8C153F7FF             call    004515E0
+004DC21F   8B07                   mov     eax, [edi]
+004DC221   8B8064020000           mov     eax, [eax+$0264]
+004DC227   BA5C702B00             mov     edx, $002B705C <font color="#008080">;multkey=2846812</font>
+004DC22C   E85353F7FF             call    00451584
+004DC231   8D4DFC                 lea     ecx, [ebp-$04]
+004DC234   8B07                   mov     eax, [edi]
+004DC236   8B9048030000           mov     edx, [eax+$0348]<font color="#008080">;in edx, again hd number</font>
+004DC23C   8B07                   mov     eax, [edi]
+004DC23E   8B8064020000           mov     eax, [eax+$0264]
+<font color="blue">* Reference to: Kbcrypt.TCryptLib.EncryptStr(System.AnsiString) <font color="#008080">;Yes!</font>
+</font>|
+004DC244   E8CB57F7FF             call    00451A14  <font color="#008080">;crypt it</font>
+....    <font color="#008080">;all this long lines</font>
+        <font color="#008080">;just copies</font>
+        <font color="#008080">;encrypted string and add '-'</font>
+        <font color="#008080">;after every 4 chars</font>
+<font color="red">* Possible Reference to Control 'RefenNo:TEdit'</font>
+|
+004DC308   8B861C020000           mov     eax, [esi+$021C]
+
+<font color="blue">* Reference to: Controls.TControl.SetText()</font>    <font color="#008080">;put referans no to edit box.</font>
+
+Hehe yea we found it.When we send &quot;referans no&quot; to this company they first decrypt it and
+find our harddisk number then they encrypt it again with another password,addkey and multkey.
+After encryption lets say we have <font color="blue">2017</font>F93F<font color="blue">E82F</font>1A35<font color="blue">302B</font>.Then our serial becomes 
+2017-E82F-302B.
+ 
+I am not delphi guru but I have succeeded to make working keygen.Here is my source.
+
+procedure TForm1.Button1Click(Sender: TObject);                             
+begin                                                                       
+                                                                            
+Serial:=(Edit1.Text);
+Serial:=copy(Serial,1,4)+copy(Serial,6,4)+copy(Serial,11,4)+copy(Serial,16,4)+
+copy(Serial,21,4)+copy(Serial,26,4);
+CryptLib1.Addkey:=2860781;
+CryptLib1.Multkey:=2846812;
+CryptLib1.Password:='I28R08E64M';
+Serial:=CryptLib1.DecryptStr(Serial);
+CryptLib1.Addkey:=4173722;
+CryptLib1.Multkey:=2343486;
+CryptLib1.Password:='B27U03L88E';
+Serial:=CryptLib1.EncryptStr(Serial);
+Edit2.Text:=copy(Serial,1,4)+'-'+copy(Serial,9,4)+'-'+copy(Serial,17,4);
+                                                                            
+My keygen is not so optimized, you can optimize your keygen by removing some useless codes
+e.g. Lzh, some checking routines.... from tcryptlib component.
+</pre>
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+  <tr>
+    <td bgcolor="#C0C0C0">
+      <center>
+        <font size=+2 color="blue">Final Notes </fonT> 
+      </center>
+    </td>
+  </tr>
+</table>
+<pre>What we learned is simply &quot;Do not use commercial protections&quot; and power of Dede.
+
+Greetings:
+Dafixer for DEDE (do you remember Merhaba Kardes :) ), risc,Accz,Psychothorn,Torn@do,+Sandman,
++Frog's Print,Tsehp,snake,Chafe,Carpathia and all helpful guys at #cracking4newbies and 
+#win32asm</pre>
+<pre>LaptoniC (kandirdim_at_hotmail)</pre>
+</BODY>
+</HTML>

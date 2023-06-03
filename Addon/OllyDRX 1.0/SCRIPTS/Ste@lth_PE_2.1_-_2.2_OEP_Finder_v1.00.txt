@@ -1,0 +1,67 @@
+/*
+Script written by Joker_Italy
+Script   : Stealth PE 2.1 - 2.2 BG Software Protect Technologies
+version  : v1.00
+Date     : 25-Aug-2008
+Test Environment : OllyDbg 1.1, ODBGScript 1.64, WINXP, WIN2000 
+*/
+
+
+var namefile
+var base
+var size
+var original
+var vedi
+
+cmp $VERSION, "1.64"
+jb odbgver
+mov vedi, eip
+add vedi, 8
+
+
+GMI eip, CODEBASE
+mov base, $RESULT
+GMI eip, CODESIZE
+mov size, $RESULT
+bpwm base, size
+run
+bpmc
+
+opcode eip
+mov vedi, $RESULT_1
+cmp vedi, "MOV     DS:[EDX],EAX"
+je edx
+cmp vedi, "MOV     DS:[EAX],EDX"
+je eax
+
+eax:
+mov original, eax
+sti
+jmp running
+edx:
+mov original, edx
+sti
+
+running:
+bphws original, "x"
+run
+an eip
+cmt eip, "This is OEP by Joker_Italy"
+GPI PROCESSNAME
+mov namefile, $RESULT
+eval "Joker_dump_{namefile}.exe" 
+dpe $RESULT, eip
+GPI PROCESSNAME
+mov namefile, $RESULT
+mov rva, eip
+GMI eip, MODULEBASE
+sub rva, $RESULT
+eval "Done. If application VB stop here !!!! Otherwise Run ImpREc and Fix Joker_dump_{namefile}.exe , RVA OEP: --> {rva} " 
+MSG $RESULT
+MSG "Script by Joker_Italy,Thank you for using my script!"
+ret
+odbgver:
+msg "This script work with ODbgscript 1.64 or above"
+jmp quit
+quit:
+ret

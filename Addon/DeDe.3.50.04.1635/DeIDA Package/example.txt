@@ -1,0 +1,108 @@
+
+This is an example of IDA listing (stolen from screen)
+before and after import reformatted DeDe map file:
+
+-------------------------------  B E F O R E  --------------------------------------- 
+
+seg000:005E96B4 sub_5E96B4      proc near               ; CODE XREF: seg000:005EB795p
+seg000:005E96B4                 push    ebx
+seg000:005E96B5                 push    esi
+seg000:005E96B6                 mov     ebx, eax
+seg000:005E96B8                 mov     esi, [ebx+2F0h]
+seg000:005E96BE                 mov     eax, [ebx+300h]
+seg000:005E96C4                 mov     edx, [esi+38h]
+seg000:005E96C7                 sub     edx, [eax+38h]
+seg000:005E96CA                 sub     edx, 6
+seg000:005E96CD                 call    sub_43F430
+seg000:005E96D2                 mov     edx, [ebx+300h]
+seg000:005E96D8                 mov     edx, [edx+30h]
+seg000:005E96DB                 mov     eax, [ebx+304h]
+seg000:005E96E1                 sub     edx, [eax+38h]
+seg000:005E96E4                 sub     edx, 8
+seg000:005E96E7                 call    sub_43F430
+seg000:005E96EC                 mov     edx, [ebx+304h]
+seg000:005E96F2                 mov     edx, [edx+30h]
+seg000:005E96F5                 mov     eax, [ebx+2FCh]
+seg000:005E96FB                 sub     edx, [eax+38h]
+seg000:005E96FE                 sub     edx, 8
+seg000:005E9701                 call    sub_43F430
+seg000:005E9706                 mov     edx, [ebx+2FCh]
+seg000:005E970C                 mov     edx, [edx+30h]
+seg000:005E970F                 mov     eax, [ebx+2F8h]
+seg000:005E9715                 sub     edx, [eax+38h]
+seg000:005E9718                 sub     edx, 2
+seg000:005E971B                 call    sub_43F430
+seg000:005E9720                 mov     eax, [ebx+2F8h]
+seg000:005E9726                 mov     edx, [eax+30h]
+seg000:005E9729                 sub     edx, 7
+seg000:005E972C                 sub     edx, 8
+seg000:005E972F                 mov     eax, [ebx+2F4h]
+seg000:005E9735                 call    sub_43F474
+seg000:005E973A                 mov     eax, [ebx+32Ch]
+seg000:005E9740                 mov     edx, [esi+38h]
+seg000:005E9743                 sub     edx, [eax+30h]
+seg000:005E9746                 sub     edx, 6
+seg000:005E9749                 call    sub_43F474
+seg000:005E974E                 mov     eax, [ebx+330h]
+seg000:005E9754                 mov     edx, [esi+38h]
+seg000:005E9757                 sub     edx, [eax+30h]
+seg000:005E975A                 sub     edx, 6
+seg000:005E975D                 call    sub_43F474
+seg000:005E9762                 pop     esi
+seg000:005E9763                 pop     ebx
+seg000:005E9764                 retn
+seg000:005E9764 sub_5E96B4      endp
+
+
+
+--------------------------------  A F T E R  ---------------------------------------- 
+
+seg000:005E96B4 DescAssistForm@TopHeaderPanelResize proc near ; CODE XREF: seg000:005EB795p
+seg000:005E96B4                 push    ebx             ; DescAssistForm@TopHeaderPanelResize
+seg000:005E96B5                 push    esi
+seg000:005E96B6                 mov     ebx, eax
+seg000:005E96B8                 mov     esi, [ebx+2F0h] ; TDescAssistForm.TopHeaderPanel : TPanel
+seg000:005E96BE                 mov     eax, [ebx+300h] ; TDescAssistForm.CloseBtn : TFlatButton
+seg000:005E96C4                 mov     edx, [esi+38h]  ; TPanel.OFFS_0038
+seg000:005E96C7                 sub     edx, [eax+38h]
+seg000:005E96CA                 sub     edx, 6
+seg000:005E96CD                 call    sub_43F430
+seg000:005E96D2                 mov     edx, [ebx+300h] ; TDescAssistForm.CloseBtn : TFlatButton
+seg000:005E96D8                 mov     edx, [edx+30h]  ; TFlatButton.OFFS_0030
+seg000:005E96DB                 mov     eax, [ebx+304h] ; TDescAssistForm.RevertBtn : TFlatButton
+seg000:005E96E1                 sub     edx, [eax+38h]
+seg000:005E96E4                 sub     edx, 8
+seg000:005E96E7                 call    sub_43F430
+seg000:005E96EC                 mov     edx, [ebx+304h] ; TDescAssistForm.RevertBtn : TFlatButton
+seg000:005E96F2                 mov     edx, [edx+30h]  ; TFlatButton.OFFS_0030
+seg000:005E96F5                 mov     eax, [ebx+2FCh] ; TDescAssistForm.NextBtn : TFlatButton
+seg000:005E96FB                 sub     edx, [eax+38h]
+seg000:005E96FE                 sub     edx, 8
+seg000:005E9701                 call    sub_43F430
+seg000:005E9706                 mov     edx, [ebx+2FCh] ; TDescAssistForm.NextBtn : TFlatButton
+seg000:005E970C                 mov     edx, [edx+30h]  ; TFlatButton.OFFS_0030
+seg000:005E970F                 mov     eax, [ebx+2F8h] ; TDescAssistForm.PrevBtn : TFlatButton
+seg000:005E9715                 sub     edx, [eax+38h]
+seg000:005E9718                 sub     edx, 2
+seg000:005E971B                 call    sub_43F430
+seg000:005E9720                 mov     eax, [ebx+2F8h] ; TDescAssistForm.PrevBtn : TFlatButton
+seg000:005E9726                 mov     edx, [eax+30h]  ; TFlatButton.OFFS_0030
+seg000:005E9729                 sub     edx, 7
+seg000:005E972C                 sub     edx, 8
+seg000:005E972F                 mov     eax, [ebx+2F4h] ; TDescAssistForm.SourceCombo : TComboBox
+seg000:005E9735                 call    sub_43F474
+seg000:005E973A                 mov     eax, [ebx+32Ch] ; TDescAssistForm.LocationCombo : TComboBox
+seg000:005E9740                 mov     edx, [esi+38h]  ; TPanel.OFFS_0038
+seg000:005E9743                 sub     edx, [eax+30h]
+seg000:005E9746                 sub     edx, 6
+seg000:005E9749                 call    sub_43F474
+seg000:005E974E                 mov     eax, [ebx+330h] ; TDescAssistForm.Bevel : TBevel
+seg000:005E9754                 mov     edx, [esi+38h]  ; TPanel.OFFS_0038
+seg000:005E9757                 sub     edx, [eax+30h]
+seg000:005E975A                 sub     edx, 6
+seg000:005E975D                 call    sub_43F474
+seg000:005E9762                 pop     esi
+seg000:005E9763                 pop     ebx
+seg000:005E9764                 retn
+seg000:005E9764 DescAssistForm@TopHeaderPanelResize endp
+

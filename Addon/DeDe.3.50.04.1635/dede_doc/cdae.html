@@ -1,0 +1,260 @@
+<HTML>
+<!-- CREATION DATE: 17/07/2000 -->
+<HEAD>
+<TITLE></TITLE>
+<META NAME="Description" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Author" CONTENT="Balbaro">
+<META NAME="Generator" CONTENT="AceHTML 4 Pro">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY>
+<
+<font face="Arial" size="5" color="#000000"><font face="Arial" size="5" color="#0000FF"><b>Made by CYBER_DEAMON
+<br>
+</b></font></font>
+
+
+<PRE>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TUTOR#12 : REVERSING DELPHI WITH THE HELP OF THE MAGIC "DEDE"
+           THX TO DA_FIXER FOR HIS WONDERFUL TOOL
+AUTHOR   : CYBER_DAEMON
+DATE     : 05.07.00
+TARGET   : TUNE AND CLEAN V5.1
+SKILL    : (X) BEGINNER ( ) INTERMEDIATE ( ) ADVANCED ( ) EXPERT
+
+UNDER MUZIK : ROUGHE CARTIER - LIVE @ ULTRASCHALL IN MUNICH (30-07-99)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tools used : - Dede 2.40 beta 1 (+dsf files! its a must.... :-)
+             - Hiew
+             - Soft-Ice
+
+so lets start....
+first i started dede and opened the target file tac.exe, (also be sure that u loaded all
+dsf files!!!) after that lets take a look at the procedures we can see the unit called "infodemo"
+this soundz very interesting to me so we may take a deeper look. Double click on FormCreate and u
+should see this:
+
+004B8206   8B83E0010000           mov     eax, [ebx+$01E0]
+004B820C   8BB0C8000000           mov     esi, [eax+$00C8]
+004B8212   83FE64                 cmp     esi, +$64
+004B8215   7C1F                   jl      004B8236          <- Hmm this seems to be our check
+							       bad/good guy ....
+
+* Possible String Reference to: "Testphase ist abgelaufen. Bitte erw
+|                                erben Sie die Vollversion."
+|
+004B8217   BAB8824B00             mov     edx, $004B82B8
+
+* Possible reference to control 'Panel2':TPanel
+|
+004B821C   8B83FC010000           mov     eax, [ebx+$01FC]
+
+* Reference to: Controls.TControl.SetText@23EDC2EF
+|
+004B8222   E85198F6FF             call    00421A78
+004B8227   33D2                   xor     edx, edx
+
+* Possible reference to control 'CorelButton2':TCorelButton
+|
+004B8229   8B83F4010000           mov     eax, [ebx+$01F4]
+
+* Reference to: Controls.TControl.SetEnabled@23EDC2EF
+|
+004B822F   E8AC97F6FF             call    004219E0
+004B8234   EB50                   jmp     004B8286
+
+* Possible String Reference to: "Demolaufzeit "
+|
+004B8236   6800834B00             push    $004B8300
+004B823B   8975F4                 mov     [ebp-$0C], esi
+004B823E   DB45F4                 fild    dword ptr [ebp-$0C]
+004B8241   DB2D10834B00           fld     tbyte ptr [$4B8310]
+004B8247   DEC9                   fmulp   st(1), st(0)
+004B8249   E88EA7F4FF             call    004029DC
+004B824E   8D55F8                 lea     edx, [ebp-$08]
+
+* Reference to: SysUtils.IntToStr@0F6FDFF6
+|
+004B8251   E82EFAF4FF             call    00407C84
+004B8256   FF75F8                 push    dword ptr [ebp-$08]
+
+* Possible String Reference to: " von 10 Tagen"
+|
+004B8259   6824834B00             push    $004B8324
+004B825E   8D45FC                 lea     eax, [ebp-$04]
+004B8261   BA03000000             mov     edx, $00000003
+
+* Reference to: System.@LStrCatN@51F89FF7
+|
+004B8266   E845BAF4FF             call    00403CB0
+004B826B   8B55FC                 mov     edx, [ebp-$04]
+
+* Possible reference to control 'Panel2':TPanel
+|
+004B826E   8B83FC010000           mov     eax, [ebx+$01FC]
+
+* Reference to: Controls.TControl.SetText@23EDC2EF
+|
+004B8274   E8FF97F6FF             call    00421A78
+004B8279   B201                   mov     dl, $01
+
+* Possible reference to control 'CorelButton2':TCorelButton
+|
+004B827B   8B83F4010000           mov     eax, [ebx+$01F4]
+
+* Reference to: Controls.TControl.SetEnabled@23EDC2EF
+|
+004B8281   E85A97F6FF             call    004219E0
+004B8286   33C0                   xor     eax, eax
+004B8288   5A                     pop     edx
+004B8289   59                     pop     ecx
+004B828A   59                     pop     ecx
+004B828B   648910                 mov     fs:[eax], edx
+
+****** FINALLY
+|
+
+* Possible String Reference to: "^[‹å]Ã"
+|
+004B828E   68A8824B00             push    $004B82A8
+004B8293   8D45F8                 lea     eax, [ebp-$08]
+004B8296   BA02000000             mov     edx, $00000002
+
+* Reference to: System.@LStrArrayClr@51F89FF7
+|
+004B829B   E8F8B6F4FF             call    00403998
+004B82A0   C3                     ret
+
+004B82A1   E972B1F4FF             jmp     00403418
+004B82A6   EBEB                   jmp     004B8293
+
+****** END
+
+
+
+after verifying the above, through setting a breakpoint and tracing we know this is the right
+place, we can now patch the RVA:  
+
+004B8215   7C1F                   jl      004B8236          
+
+to:
+
+004B8215   EB1F                   jmp     004B8236          
+
+
+after the test period the "test" button will be grayed.... !!!!
+
+so go back to dede and double click on FormShow.... you should see
+this when u scroll a little bit down...
+
+* Possible reference to control 'Label8':TLabel
+|
+004B8082   8B8314020000           mov     eax, [ebx+$0214]
+
+* Reference to: Controls.TControl.SetText@23EDC2EF
+|
+004B8088   E8EB99F6FF             call    00421A78
+004B808D   8BC6                   mov     eax, esi
+
+* Reference to: System.TObject.Free@23EDC2EF
+|
+004B808F   E8CCADF4FF             call    00402E60
+
+* Possible reference to control 'Indicator1':TIndicator
+|
+004B8094   8B83E0010000           mov     eax, [ebx+$01E0]
+004B809A   83B8C800000064         cmp     dword ptr [eax+$00C8], +$64  -> THIS IS THE AWFUL CHECK!!!!
+004B80A1   7C0F                   jl      004B80B2
+004B80A3   33D2                   xor     edx, edx
+
+* Possible reference to control 'CorelButton2':TCorelButton
+|
+004B80A5   8B83F4010000           mov     eax, [ebx+$01F4]
+
+* Reference to: Controls.TControl.SetEnabled@23EDC2EF
+|
+004B80AB   E83099F6FF             call    004219E0
+004B80B0   EB0D                   jmp     004B80BF
+004B80B2   B201                   mov     dl, $01
+
+* Possible reference to control 'CorelButton2':TCorelButton
+|
+004B80B4   8B83F4010000           mov     eax, [ebx+$01F4]
+
+* Reference to: Controls.TControl.SetEnabled@23EDC2EF
+|
+004B80BA   E82199F6FF             call    004219E0
+004B80BF   33C0                   xor     eax, eax
+004B80C1   5A                     pop     edx
+004B80C2   59                     pop     ecx
+004B80C3   59                     pop     ecx
+004B80C4   648910                 mov     fs:[eax], edx
+
+
+so replace this shit:
+
+004B80A1   7C0F                   jl      004B80B2
+
+with:
+
+004B80A1   EB0F			  jmp     004B80B2
+
+
+but what we want is to completly remove diz shit from our target...
+
+so back to dede and double click on FormShow set a bpx on it and trace it...
+after some prets you should notice that the nag is called from RVA: 
+
+4BAE00 Call XXXXXXXX
+
+simply nop out the call and restart it... ok mission1 succeeded but we are not finished...
+
+when we use included features like the "hd-optimizer" we will get an ugly nag saying
+we should buy diz program and again the nag we received as we have started the program....
+
+so letz first reverse the "buy-it" nag... we do this by setting a bpx at showwindow and press on BaqSoftSystemCleaner
+(in tools section) trace it till u come back to this after some tracing and prets:
+
+4BD050 Call XXXXXXXX
+
+simply nop out this call too... this will do it....
+
+ok but we have still the other nag left....
+we notice that these are external tools so each one is a own file....
+when we take a look into the install directory we can see also these files:
+
+- TACDIAG.EXE
+- TACHDD.EXE
+- TACSRK.EXE
+
+so letz open for example TACDIAG.EXE in DEDE.
+my thoughts are correct we see that in every exe there is the same check.... so this is a little task
+for u ma friend....
+
+
+
+!REVERSED ONLY FOR GAINING KNOWLEDGE! IF YOU PLAN TO USE THIS SOFTWARE FURTHER THEN U !!!MUST!!! BUY IT....
+
+
+
+done by da CYBER_DAEMON in 2000 or 2K 
+
+
+
+
+
+
+
+Thanx to Da_Fixer for his *GREAT* tool Dede and being a friend, also to BORLAND for Delphi! WE love it :))
+greetz to all guys who know me....
+
+
+
+</PRE>
+
+</BODY>
+</HTML>

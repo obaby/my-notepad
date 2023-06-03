@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE></TITLE>
+<META NAME="Author" CONTENT="Xavier Lafinesse">
+<META NAME="Description" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+</HEAD>
+<BODY BACKGROUND="images/fond.gif" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#000080" VLINK="#800080" ALINK="#FF0000">
+<TABLE WIDTH=100% HEIGHT=100% BORDER=0>
+  <TR>
+    <TD valign=top height=99%>
+<!--- enter text here -->
+<div align="right"><a name="toppage"><a href="#bottompage">Goto bottom of the page.</a><br></a></div>
+<BR><BR><BR><BR><BR>
+<b><font size="3" color="#000080"><a href="#Processaexe">How to process a exe.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#saveproject">How to save a project.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#loadsafeproject">How to load a saved project.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#loadsymbolfile">How to load a symbol file.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#buildsymbolfile">How do i build a symbol file.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#dumpdcu">How do i dump a DCU.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#editpeheader">How do i edit the PE Header.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#dumpactiveprocess">How do i dump a active process.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#dumpdoifile">How do i build a DOI file.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#convertrva">How do i convert a RVA.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#dumpprojectsource">How do i dump the disassembled project source.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#assemblerfromopcode">How to i get the assembler code from a code.</a></u></font></b><br>
+<b><font size="3" color="#000080"><a href="#createexports">How do i export symbol files for IDA and Wdasm.</a></u></font></b><br>
+
+<!-- <b><font size="3" color="#000080">Can i save the processed target?</u></font></b><br>
+<b><font size="3" color="#000080">Can i save the processed target?</u></font></b><br>
+<b><font size="3" color="#000080">Can i save the processed target?</u></font></b><br> -->
+<br><br><br><br>
+<a name="Processaexe"><b><font size="5" color="#000080">How to process a exe.</u></font></b><br></a><br>
+Click the Filename Edit box and select the to be disassembled exe.<br>
+<img src="images/001.GIF" border="0" width="635" height="383"><br>
+After loading the exe click the Process button or click the Process menu item.<br>
+<img src="images/002.GIF" border="0" width="638" height="385"><br>
+If the exe is a unpacked Delphi or Builder app the exe will be disassembled.<br>
+<img src="images/003.GIF" border="0" width="638" height="385"><br>
+
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="saveproject"><b><font size="5" color="#000080">How to save a project.</u></font></b><br></a><br>
+After disassembling the exe click the File|Save Project menu item and choose the destination folder.<br>
+<img src="images/004.GIF" border="0" width="638" height="385"><br>
+
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="loadsafeproject"><b><font size="5" color="#000080">How to load a saved project.</u></font></b><br></a><br>
+Click the File|Open Project menu item to open a previously saved Project.<br>
+<img src="images/005.GIF" border="0" width="638" height="385"><br>
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="loadsymbolfile"><b><font size="5" color="#000080">How to load a symbol file.</u></font></b><br></a><br>
+Load a symbol file by clicking the File|Load symbol file menu item.<br>
+<img src="images/006.GIF" border="0" width="638" height="385"><br>
+Or you can click the Options|Symbols menu item to open the Symbols Management window.<br>
+<img src="images/007.GIF" border="0" width="638" height="385"><br>
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="buildsymbolfile"><b><font size="5" color="#000080">How do i build a symbol file.</u></font></b><br></a><br>
+The generic VCL symbol file is included with the Dede's full distribution but you can<br>
+build a DSF symbol file from any DCU by clicking Dumpers|DSF builder.<br>
+<img src="images/008.GIF" border="0" width="638" height="385"><br>
+You can also build a DSF symbol file from a BPL by selecting the BPL tab.<BR>
+<img src="images/009.GIF" border="0" width="638" height="385"><br>
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="dumpdcu"><b><font size="5" color="#000080">How do i dump a DCU.</u></font></b><br></a><br>
+Dump a DCU by clicking Dumpers|DCU Builder.<BR>
+<img src="images/008.GIF" border="0" width="638" height="385"><br>
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="editpeheader"><b><font size="5" color="#000080">How do i edit the PE Header.</u></font></b><br></a><br>
+You can edit any PE Header (if you know what your doing) by clicking Tools|Pe Editor.
+<img src="images/010.GIF" border="0" width="638" height="385"><br>
+And do whatever you want to do in this editor window, i wont go more into this i guess if you  <BR>
+need this help then you wont need the PE Editor :) .<BR>
+<img src="images/011.GIF" border="0" width="638" height="385"><br>
+
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="dumpactiveprocess"><b><font size="5" color="#000080">How do i dump a active process.</u></font></b><br></a><br>
+In my opinion the most powerfull feature of Dede (thanks Dafixer) is the dump active process possibility.<BR>
+By clicking Tools|Dump Active Process <br>
+<img src="images/012.GIF" border="0" width="638" height="385"><br>
+You can disassemble most of the packed exe's and extract a lot of information.<br>
+The process must be running of course and it must be a Delphi or Builder generated app.<BR>
+ 
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="dumpdoifile"><b><font size="5" color="#000080">How do i build a DOI file.</u></font></b><br></a><br>
+You can build a DOI file by clicking Tools|DOI Builder and you'll get the DOI Builder window.<br>
+<img src="images/013.GIF" border="0" width="638" height="385"><br>
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="convertrva"><b><font size="5" color="#000080">How do i convert a RVA.</u></font></b><br></a><br>
+You can find the physical offset of a exe by clicking the Tools|Rva Convertor menu item.<BR>
+The process must be loaded.<BR>
+<img src="images/014.GIF" border="0" width="278" height="156"><br>
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="dumpprojectsource"><b><font size="5" color="#000080">How do i dump the disassembled project source.</u></font></b><br></a><br>
+After loading and processing the exe, click on the projects tab of Dede's main window.<br>
+<img src="images/016.GIF" border="0" width="638" height="385"><br>
+After selecting a Project destination directory click the create files button to save all the source <BR>
+files to the destination folder.<BR>
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="assemblerfromopcode"><b><font size="5" color="#000080">How to i get the assembler code from a opcode.</u></font></b><br></a>
+You can retrieve the assembler code from a opcode with the Tools|Asm to Opcode menu item.<BR>
+<img src="images/015.GIF" border="0" width="278" height="156"><br>
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<a name="createexports"><b><font size="5" color="#000080">How do i export symbol files for IDA and Wdasm.</u></font></b><br></a><br>
+After loading and processing the exe, click on the exports tab of Dede's main window.<br>
+<img src="images/017.GIF" border="0" width="638" height="385"><br>
+Select the intended symbol type .<BR>
+After selecting a export destination directory click the create files button to save the symbol <BR>
+files to the destination folder.<BR>
+<div align="right"><a href="#toppage">Return to the top of the page</a>.<br></div>
+<br><br><br><br><br>
+<div align="right"><a name="bottompage"><a href="#toppage">Goto top of the page</a>.<br></a></div>
+<!--- END (enter text here)-->
+   </TD>
+  </TR>
+  <TR>
+    <TD valign=top height=1%>
+<CENTER>
+<FONT size=1>
+© Copyright 2001
+Xavier Lafinesse<br>
+</FONT>
+</CENTER>
+
+
+<!--- End (company name)-->
+
+   </TD>
+  </TR>
+
+</TABLE>
+
+</BODY>
+</HTML>

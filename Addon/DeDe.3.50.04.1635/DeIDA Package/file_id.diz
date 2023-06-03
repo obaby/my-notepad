@@ -1,0 +1,6 @@
+
+DeIDA Package v. 1.3
+
+A very simple IDA script and four primitive utilities
+for reformatting EXE2DPR and DeDe output files and
+reimport them to IDA database.

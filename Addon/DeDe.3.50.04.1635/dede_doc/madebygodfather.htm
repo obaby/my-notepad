@@ -1,0 +1,173 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><title>Made by Godfather+</title></head>
+<body bgcolor="#FFFFFF">
+
+<font face="Arial" size="5" color="#000000"><font face="Arial" size="5" color="#0000FF"><b>Made by Godfather+
+<br>
+</b></font></font>
+
+
+<p align="CENTER"><font face="Times New Roman" size="7" color="#000000"><font face="Times New Roman" size="7" color="#FF0000">Cracking using DeDe - first essay
+<br>
+</p></font><font face="Times New Roman" size="4" color="#000000"><font face="Times New Roman" size="4" color="#008080">Prologue:
+<br>
+</font></font><font face="Times New Roman" size="4" color="#000000">First of all I must thanks +DaFixer for magnificent tool which he made. Hey crackers take a good look on this tool especially if work with Delphi targets. I don't explain how to use it because it is so intuitive and +DaFixer say all important in his readme.txt. If needed I'll wrote some first step for newbies. Feel free to mail me.
+<br>
+<font face="Times New Roman" size="4" color="#008080">How start cracking?
+<br>
+</font></font><font face="Times New Roman" size="4" color="#000000">Always, but ALWAYS is essential to know type of .exe with you playing. Type of exe determine which tools we use and right choose of tools may spare us many, many time. To determine type of exe except experience another tools may help very well fa, fs, gt  to find type of exe, is it protected or not etc. 
+<br>
+But definitely one of the best tool for me is ExeScope. In special cases I use Restorator, but it is only when target have enormous type of dialogs which I must inspect quickly. I do not now explain technique for recognition if needed I'll wrote essay especial for this theme - look prologue.
+<br>
+BTW, All this tool can be found on protools  thank you Kaparo.
+&nbsp;<br>
+<br>
+<font face="Times New Roman" size="4" color="#008080">What is our target and what tools we need?
+&nbsp;<br>
+<!-- <table border="0" cellpadding="0" cellspacing="0"><tr valign="TOP"><td width="102"></td><td><font face="Times New Roman" size="4" color="#008080"></font>
+</font></font></td></tr></table><table border="0" cellpadding="0" cellspacing="0"><tr valign="TOP"><td width="77"></td><td width="25"><font face="Times New Roman" size="4" color="#008080"><font face="Times New Roman" size="4" color="#000000">1 - Target: ExeScope 5.12 excellent little resource viewer/editor. 
+&nbsp;<br>-->
+&nbsp;<br>
+</font></td></tr><tr valign="TOP"><td></td><td><font face="Times New Roman" size="4" color="#000000">  1 - Target: ExeScope 5.12 excellent little resource viewer/editor. 
+&nbsp;<br>
+</font></td></tr><tr valign="TOP"><td></td><td><font face="Times New Roman" size="4" color="#000000">  2 - Type of crack: Serial number fishing 
+&nbsp;<br>
+</font></td></tr><tr valign="TOP"><td></td><td><font face="Times New Roman" size="4" color="#000000">  3 - What program do if not regged: complain about that when try to save some changes 
+&nbsp;<br>
+</font></td></tr><tr valign="TOP"><td></td><td><font face="Times New Roman" size="4" color="#000000">  4 - Tools used: DeDe and if you do not like math, TRW  only because I am to lazy to reboot my win98 for Ice :-), old TD32 may be good too 
+&nbsp;<br>
+</font></td></tr><tr valign="TOP"><td></td><td><font face="Times New Roman" size="4" color="#000000">  5 - Little time, about 10 minutes with DeDe. Without DeDe It will take much more.
+&nbsp;<br>
+&nbsp;<br>
+</font></td></tr><tr valign="TOP"><td></td><td><font face="Times New Roman" size="4" color="#000000"></font></td></tr></table><font face="Times New Roman" size="4" color="#000000"><font face="Times New Roman" size="4" color="#008080">Let's crack target!
+&nbsp;<br>
+&nbsp;<br>
+</font></font><font face="Times New Roman" size="4" color="#000000">Fire DeDe choose our target and press Process button. After some time target is processed and ready for us to start exploring. Playing with DeDe you very quickly learn what is what and where it is. Now go on DFM section. This section is responsible for showing Delphi form in text format. Find out TFReg and inspect caption, oh this is our "Regist" caption which means that is form for we look. Do not be afraid if see some strange characters some in the description form or in hints, author of ExeScope, Toshi is Japanese. 
+<br>
+
+Let's sniff some more, press DCU button and you find all events which are on specified form. Most beautiful part coming now: In left window select our DCU which depend on TFReg, in right window select event (RegBtnClick). Now press right mouse button and select disassemble. WOW what is this? Excellent disassembled code appear right in front of us! Not 10 MB or more of asm code, not somewhere without sense in code but exactly where we MUST be - inside event which happen when someone press button for registration. If you include Delphi symbols all Delphi functions are shown. If you do not know how to include symbols in your code read +DaFixer's readme.txt. If this isn't still enough fell free to email me. 
+<br>
+&nbsp;<br>
+After disassembling we have this situation (most important part):
+<br>
+</font><font face="Courier New" size="3" color="#000000">*&nbsp;Possible&nbsp;Reference&nbsp;to&nbsp;Control&nbsp;'NameEdit:TEdit'
+<br>
+0047D12A&nbsp;8B83DC010000&nbsp;mov&nbsp;eax,&nbsp;[ebx+$01DC]&nbsp;
+<br>
+*&nbsp;Reference&nbsp;to:&nbsp;Controls.TControl.GetTextBuf()
+<br>
+0047D130&nbsp;E89B5FFAFF&nbsp;call&nbsp;004230D0
+<br>
+0047D135&nbsp;8B55FC&nbsp;mov&nbsp;edx,&nbsp;[ebp-$04]
+<br>
+0047D138&nbsp;A1EC804800&nbsp;mov&nbsp;eax,&nbsp;dword&nbsp;ptr&nbsp;[$4880EC]
+<br>
+*&nbsp;Reference&nbsp;to:&nbsp;System.LStrCat()
+<br>
+0047D13D&nbsp;E83A68F8FF&nbsp;call&nbsp;0040397C
+<br>
+0047D142&nbsp;8D55FC&nbsp;lea&nbsp;edx,&nbsp;[ebp-$04]
+<br>
+*&nbsp;Possible&nbsp;Reference&nbsp;to&nbsp;Control&nbsp;'IDEdit:TEdit'
+<br>
+0047D145&nbsp;8B83E0010000&nbsp;mov&nbsp;eax,&nbsp;[ebx+$01E0]
+<br>
+*&nbsp;Reference&nbsp;to:&nbsp;Controls.TControl.GetTextBuf()
+<br>
+0047D14B&nbsp;E8805FFAFF&nbsp;call&nbsp;004230D0
+<br>
+0047D150&nbsp;8B55FC&nbsp;mov&nbsp;edx,&nbsp;[ebp-$04]&nbsp;
+<br>
+0047D153&nbsp;A19C804800&nbsp;mov&nbsp;eax,&nbsp;dword&nbsp;ptr&nbsp;[$48809C]
+<br>
+*&nbsp;Reference&nbsp;to:&nbsp;System.LStrCat()
+<br>
+0047D158&nbsp;E81F68F8FF&nbsp;call&nbsp;0040397C
+<br>
+0047D15D&nbsp;8B159C804800&nbsp;mov&nbsp;edx,&nbsp;[$48809C]
+<br>
+0047D163&nbsp;8B12&nbsp;mov&nbsp;edx,&nbsp;[edx]
+<br>
+0047D165&nbsp;A1947F4800&nbsp;mov&nbsp;eax,&nbsp;dword&nbsp;ptr&nbsp;[$487F94]
+<br>
+0047D16A&nbsp;8B00&nbsp;mov&nbsp;eax,&nbsp;[eax]
+<br>
+*&nbsp;Reference&nbsp;to&nbsp;published&nbsp;proc:&nbsp;TFMain.CheckCode<font face="Courier New" size="3" color="#FF0000">&nbsp;&lt;-&nbsp;People&nbsp;look&nbsp;this:&nbsp;no&nbsp;one&nbsp;today's&nbsp;disassembler&nbsp;cant&nbsp;do&nbsp;that&nbsp;in&nbsp;this&nbsp;way,&nbsp;nor&nbsp;out&nbsp;beloved&nbsp;IDA&nbsp;without&nbsp;hard&nbsp;work&nbsp;and&nbsp;many&nbsp;hours&nbsp;of&nbsp;thinking,&nbsp;believe&nbsp;me.
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">0047D16C&nbsp;E8DB780000&nbsp;call&nbsp;00484A4C
+<br>
+0047D171&nbsp;84C0&nbsp;test&nbsp;al,&nbsp;al&nbsp;
+<br>
+0047D173&nbsp;0F848D000000&nbsp;jz&nbsp;0047D206&nbsp;
+<!-- <font face="Courier New" size="3" color="#FF0000">&lt;-&nbsp;What&nbsp;you&nbsp;mean&nbsp;how&nbsp;much&nbsp;need&nbsp;one&nbsp;to&nbsp;crack&nbsp;this&nbsp;jump&nbsp;(only&nbsp;nop&nbsp;or&nbsp;jmps)?&nbsp;But&nbsp;it&nbsp;is&nbsp;not&nbsp;OK&nbsp;because&nbsp;in&nbsp;code&nbsp;may&nbsp;be&nbsp;some&nbsp;other&nbsp;check&nbsp;for&nbsp;serial.&nbsp;Actually&nbsp;I&nbsp;think&nbsp;that&nbsp;it&nbsp;is,&nbsp;but&nbsp;I&nbsp;don't&nbsp;seek&nbsp;for&nbsp;it&nbsp;because&nbsp;want&nbsp;to&nbsp;show&nbsp;strength&nbsp;of&nbsp;DeDe.
+<br>-->
+&nbsp;<br>
+</font></td></tr><tr valign="TOP"><td></td><td><font face="Times New Roman" size="4" color="#000000">Well this be very easy, but let's explore some more. In this case you can do this on follow two ways
+&nbsp;<br>
+</font></td></tr><tr valign="TOP"><td></td><td><font face="Times New Roman" size="4" color="#000000">1 - Go directly where it say: TFMain.CheckCode and disassemble it like previous event.
+&nbsp;<br>
+</font></td></tr><tr valign="TOP"><td></td><td><font face="Times New Roman" size="4" color="#000000">2 - Or copy this call address on clipboard, go on menu tools-&gt;disasemble proc, paste address and press OK. This is useful if procedure isn't published  for now this work on this way but in future this will be more easier. Trust me ;-).
+&nbsp;<br>
+</font></td></tr><tr valign="TOP"><td></td><td><font face="Times New Roman" size="4" color="#000000"></font></td></tr></table><font face="Times New Roman" size="4" color="#000000">Little theory for continuing. Delphi deals with global and locals variables references it on the following way: [ebp<font face="Times New Roman" size="4" color="#FF0000">+</font></font><font face="Times New Roman" size="4" color="#000000">xy] means that is pointer on global variable, [ebp<font face="Times New Roman" size="4" color="#FF0000">-</font></font><font face="Times New Roman" size="4" color="#000000">xy] means that it is pointer on local variable. When we continue our explore we found next:
+<br>
+</font><font face="Courier New" size="3" color="#000000">00484A6C&nbsp;8B45FC&nbsp;mov&nbsp;eax,&nbsp;[ebp-$04]&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-&nbsp;pointer&nbsp;on&nbsp;local&nbsp;var.&nbsp;in&nbsp;eax
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">|&nbsp;or:&nbsp;System.LStrOfChar()&nbsp;
+<br>
+00484A6F&nbsp;E830F1F7FF&nbsp;call&nbsp;00403BA4&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-&nbsp;Dede&nbsp;just&nbsp;fine&nbsp;find&nbsp;what&nbsp;is&nbsp;this&nbsp;call
+<br>
+but&nbsp;only&nbsp;if&nbsp;you&nbsp;include&nbsp;symbols
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">00484A74&nbsp;83F80A&nbsp;cmp&nbsp;eax,&nbsp;+$0A&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-&nbsp;look,&nbsp;look,&nbsp;our&nbsp;code&nbsp;must&nbsp;be&nbsp;10&nbsp;chars
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">00484A77&nbsp;7527&nbsp;jnz&nbsp;00484AA0&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-&nbsp;if&nbsp;not,&nbsp;go&nbsp;out&nbsp;you&nbsp;bad&nbsp;cracker
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">00484A79&nbsp;8B45FC&nbsp;mov&nbsp;eax,&nbsp;[ebp-$04]
+<br>
+00484A7C&nbsp;803841&nbsp;cmp&nbsp;byte&nbsp;ptr&nbsp;[eax],&nbsp;$41&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-&nbsp;is&nbsp;first&nbsp;char&nbsp;'A'
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">00484A7F&nbsp;751F&nbsp;jnz&nbsp;00484AA0&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-&nbsp;nope,&nbsp;go&nbsp;out&nbsp;you&nbsp;bad&nbsp;cracker
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">00484A81&nbsp;8B45FC&nbsp;mov&nbsp;eax,&nbsp;[ebp-$04]
+<br>
+00484A84&nbsp;0FB64008&nbsp;movzx&nbsp;eax,&nbsp;byte&nbsp;ptr&nbsp;[eax+$08]&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-take&nbsp;8'th&nbsp;char&nbsp;in&nbsp;eax
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">00484A88&nbsp;8B55FC&nbsp;mov&nbsp;edx,&nbsp;[ebp-$04]
+<br>
+00484A8B&nbsp;0FB65209&nbsp;movzx&nbsp;edx,&nbsp;byte&nbsp;ptr&nbsp;[edx+$09]&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-take&nbsp;9'th&nbsp;char&nbsp;in&nbsp;edx
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">00484A8F&nbsp;03C2&nbsp;add&nbsp;eax,&nbsp;edx&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-&nbsp;add&nbsp;edx&nbsp;on&nbsp;eax,&nbsp;put&nbsp;all&nbsp;in&nbsp;eax
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">00484A91&nbsp;B90A000000&nbsp;mov&nbsp;ecx,&nbsp;$0000000A&nbsp;
+<br>
+00484A96&nbsp;99&nbsp;cdq
+<br>
+00484A97&nbsp;F7F9&nbsp;idiv&nbsp;ecx&nbsp;&lt;-divide&nbsp;with&nbsp;ten
+<br>
+00484A99&nbsp;83FA04&nbsp;cmp&nbsp;edx,&nbsp;+$04&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-if&nbsp;remainder&nbsp;is&nbsp;4&nbsp;all&nbsp;ok&nbsp;you&nbsp;registered&nbsp;it!&nbsp;I&nbsp;suggest&nbsp;something&nbsp;like&nbsp;A23456708&nbsp;for&nbsp;serial&nbsp;number&nbsp;because&nbsp;($30+$38)/$A&nbsp;give&nbsp;us&nbsp;4&nbsp;remained.&nbsp;$30&nbsp;and&nbsp;$38&nbsp;are&nbsp;our&nbsp;last&nbsp;two&nbsp;chars&nbsp;0&nbsp;and&nbsp;8&nbsp;hex.
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">00484A9C&nbsp;7502&nbsp;jnz&nbsp;00484AA0&nbsp;<font face="Courier New" size="3" color="#FF0000">&lt;-&nbsp;nope,&nbsp;go&nbsp;out&nbsp;you&nbsp;bad&nbsp;cracker
+<br>
+</font></font><font face="Courier New" size="3" color="#000000">00484A9E&nbsp;B301&nbsp;mov&nbsp;bl,&nbsp;$01&nbsp;
+<br>
+00484AA0&nbsp;33C0&nbsp;xor&nbsp;eax,&nbsp;eax
+<br>
+00484AA2&nbsp;5A&nbsp;pop&nbsp;edx
+<br>
+00484AA3&nbsp;59&nbsp;pop&nbsp;ecx
+<br>
+00484AA4&nbsp;59&nbsp;pop&nbsp;ecx
+<br>
+</font><font face="Times New Roman" size="4" color="#000000">Like I say before if you do not like math just put bpx on $00484A99 in Ice, Trw, TD32 or some other windows debugger, but remember code must start with capital A and be 10 char long, and almost forgot you may use any name. Last word, ExeScope do not say nothing like 'Thank you or something', but complain if enter wrong serial code.
+<br>
+<font face="Times New Roman" size="4" color="#008080">Epilogue:
+<br>
+</font></font><font face="Times New Roman" size="4" color="#000000">Basically this registering intermediate skill cracker may do <font face="Times New Roman" size="4" color="#FF0000">only with DeDe</font></font><font face="Times New Roman" size="4" color="#000000"> without any problem. This is for first public tutorial fell free to send your comments or questions on
+<br>
+<P ALIGN="CENTER"><A HREF="mailto:godfather@phreaker.net">Godfather+</A></P><P ALIGN="CENTER"><A HREF="mailto:godfatherplus@hotbot.com">Godfather+</A></P>
+
+</p></font><font face="Arial" size="3" color="#000000">
+<br>
+</font></font>
+
+</body></html>

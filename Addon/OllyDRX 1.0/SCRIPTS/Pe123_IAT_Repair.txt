@@ -1,0 +1,72 @@
+var iat_start
+var iat_end
+var func
+var gp
+var chek
+var chj
+var oep
+mov oep,eip
+gpa  "GetProcAddress","kernel32.dll"
+mov gp, $RESULT
+
+ask "Enter start IAT"
+cmp $RESULT,0
+je quit
+mov iat_start,$RESULT
+ask "Enter end IAT"
+cmp $RESULT,0
+je quit
+mov iat_end,$RESULT
+loop:
+cmp iat_start,iat_end
+je quit
+cmp [iat_start],0
+je nextf
+mov eip,[iat_start]
+
+sti
+mov chj,[eip]
+and chj,000000FF
+cmp chj,0EB
+jne next
+
+bp gp
+erun
+bc gp
+rtu
+mov [iat_start],eax
+add iat_start,4
+jmp loop
+
+next:
+
+cmp chj,55
+je next2
+cmp chj,58
+je nextf
+find eip,#89442408#
+bp $RESULT
+run
+bc eip
+mov [iat_start],eax
+add iat_start,4
+jmp loop
+
+next2:
+cmp chj,58
+je nextf
+find eip,#8B5514#
+bp $RESULT
+run
+bc eip
+mov [iat_start],eax
+add iat_start,4
+jmp loop
+
+quit:
+mov eip,oep
+ret
+
+nextf:
+add iat_start,4
+jmp loop

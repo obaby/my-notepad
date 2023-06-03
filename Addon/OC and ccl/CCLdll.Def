@@ -1,0 +1,15 @@
+LIBRARY   CCLdll 
+EXPORTS  	cGetRvaSection
+		   	cGetSecTableStart 
+		   	cRvaToOffset
+		   	cCheckPE
+		   	cGetSecNum
+		   	cGetSecRawOff
+		   	cGetSecRawSize
+		   	cGetEntryOff
+		   	cGetEntryRva
+		   	cCanAddNewSec
+		   	cOffsetToRva
+		   	cChangeSecAttribute
+		   	cGetSecAttribute
+		   	cCheckIsDll

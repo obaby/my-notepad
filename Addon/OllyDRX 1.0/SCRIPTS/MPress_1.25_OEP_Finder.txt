@@ -1,0 +1,39 @@
+/*
+
+          MPRESS 1.25 OEP Finder
+    http://www.matcode.com/mpress.htm
+
+
+Script written by k11
+Test Environment: OllyDbg v1.10, ODbgScript v1.65
+*/
+
+var temp
+find eip, #0000E9????????#
+cmp $RESULT,0
+je error
+mov temp, $RESULT
+inc temp
+inc temp
+bp temp
+run
+bc temp
+sto
+sto
+find eip, #61E9????????#
+cmp $RESULT,0
+je error
+mov temp, $RESULT
+inc temp
+bphws temp, "x"
+run
+bphwc temp
+sto
+an eip
+cmt eip, "This is the OEP"
+MSG "OEP found!"
+ret
+
+error:
+MSG "Error!"
+ret

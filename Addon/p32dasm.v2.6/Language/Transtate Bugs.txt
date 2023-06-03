@@ -1,0 +1,42 @@
+Unicode Bugs:
+=============
+
+In Positionn Manager window:
+  There is ListView with caption "Properties" (0011). This can't
+  be translated to unicode languages (chinese) because this control
+  doesn't suport unicode strings. You can keep it untranslated.
+
+In List of Objects window:
+  There is standard TreeView which doesn't suport unicode strings so it's
+  not able display unicode strings
+
+Main window:
+  ToolBar tooltips doesn't suport unicode strings,
+  When you right click with Mouse and try use Option "Search:"
+  you will be failed in Unicode countries, because it calculates
+  wrong word under cursor.
+
+If P32Dasm display your language it doesn't mean that it also support your 
+language (displaying objects from executable ...)
+
+
+Setting font charset for objects used in P32Dasm (labels, objects)
+==================================================================
+In each language file change in section [Strings] charset constant to your that
+you use (if not presented just add it), example:
+
+[Strings]
+0000=238
+
+List of supported charsets:
+
+Western European - 0
+Central European - 238
+Baltic           - 186
+Turkish          - 162
+Greek            - 161
+Cyrillic         - 204
+Hebrew           - 177
+Arabic           - 178
+Thai             - 222
+Vietnamese       - 163

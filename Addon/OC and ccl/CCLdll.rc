@@ -1,0 +1,3 @@
+#include "Res/CCLdllDlg.rc"
+#include "Res/CCLdllRes.rc"
+#include "Res/CCLdllVer.rc"
