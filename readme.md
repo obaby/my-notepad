@@ -14,7 +14,7 @@ IDE截图：
 
 ![notepad](screenshots/notepad.png)
 
-
+运行效果：https://www.bilibili.com/video/BV16M4y1e79M/?vd_source=f7b69010c8af509b304df2b0db6a868e  
 
 ```
 obaby@mars
